@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Edit from "./pages/Edit";
@@ -22,6 +22,10 @@ const App = () => {
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
 
+  useEffect(() => {
+    readRecipe()
+  }, [])
+
   const readRecipe = () => {
     fetch(
       "https://api.spoonacular.com/recipes/FindByIngredients/generate?apiKey=bb08e25c20e84b7983251abaf19edcbf"
@@ -40,6 +44,10 @@ const App = () => {
     setChecked2(!checked2);
   };
 
+  const createReview = (review) => {
+    console.log(review)
+  }
+
 
   return (
     <div>
@@ -55,7 +63,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/index" element={<Index />} />
         <Route path="/show" element={<Show />} />
-        <Route path="/new" element={<New />} />
+        <Route path="/new" element={<New createReview={createReview} />} />
         <Route path="/edit" element={<Edit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
