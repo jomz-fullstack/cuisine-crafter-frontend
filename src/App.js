@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Edit from "./pages/Edit";
+import Home from "./pages/Home";
+import Index from "./pages/Index";
+import New from "./pages/New";
+import NotFound from "./pages/NotFound";
+import Show from "./pages/Show";
 
-function App() {
+import mockUsers from "./mockUsers";
+import mockRecipes from "./mockRecipes";
+import mockReviews from "./mockReviews";
+
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+
+const App = () => {
+  const [currentUser, setCurrentUser] = useState(mockUsers);
+  const [recipe, setRecipe] = useState(mockRecipes);
+  const [review, setReview] = useState(mockReviews);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/index" element={<Index />} />
+        <Route path="/show" element={<Show />} />
+        <Route path="/new" element={<New />} />
+        <Route path="/edit" element={<Edit />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
