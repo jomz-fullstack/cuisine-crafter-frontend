@@ -19,6 +19,8 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(mockUsers);
   const [recipe, setRecipe] = useState(mockRecipes);
   const [review, setReview] = useState(mockReviews);
+  const [checked1, setChecked1] = useState(false);
+  const [checked2, setChecked2] = useState(false);
 
   const readRecipe = () => {
     fetch(
@@ -31,21 +33,26 @@ const App = () => {
       .catch((error) => console.log("Recipe read errors: ", error));
   };
 
-  const handleChange = (e) = {
-    setRecipe(e.target.value)
-  }
+  const handleChange1 = () => {
+    setChecked1(!checked1);
+  };
+  const handleChange2 = () => {
+    setChecked2(!checked2);
+  };
+
 
   return (
     <div>
       <Header />
+      <div>
+        <h2>Pick your Protein</h2>
+        <Checkbox label="Beef" value={checked1} onChange={handleChange1} />
+        <br/>
+        <Checkbox label="Chicken" value={checked2} onChange={handleChange2} />
+
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <h2>Pick your Protein</h2>
-        <input
-          type="text"
-          placeholder="This"
-          onChange={handleChange}
-        />
         <Route path="/index" element={<Index />} />
         <Route path="/show" element={<Show />} />
         <Route path="/new" element={<New />} />
@@ -56,4 +63,13 @@ const App = () => {
     </div>
   );
 };
+const Checkbox = ({ label, value, onChange }) => {
+  return (
+    <label>
+      <input type="checkbox" checked={value} onChange={onChange} />
+      {label}
+    </label>
+  );
+};
+
 export default App;
