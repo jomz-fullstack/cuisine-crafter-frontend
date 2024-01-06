@@ -3,7 +3,7 @@ let mockReviews = [
     id: 1,
     header: "Taste delicious",
     body: "the pasta was very creamy",
-    stars: 3,
+    stars: 1,
     recipe_id: 1,
   },
   {
@@ -17,7 +17,7 @@ let mockReviews = [
     id: 3,
     header: "Best food ive had in a long time",
     body: "would come back again!",
-    stars: 5,
+    stars: 1,
     recipe_id: 3,
   },
 ]

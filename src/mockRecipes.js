@@ -5,7 +5,7 @@ let mockRecipes = [
         instructions:"Add the oil to the pan and heat until it begins to shimmer and move fluidly around the pan.",
         protein:"steak",
         ingredients:"steak, oil, butter",
-        nutrition:"30 grams protein",
+        nutrition:"999999 grams protein",
         id: 1,
     },
     {
@@ -14,7 +14,7 @@ let mockRecipes = [
         instructions: "Put the chicken in the oven",
         protein:"chicken",
         ingredients:"steak, seasonings",
-        nutrition:"20 grams of protein",
+        nutrition:"9999999 grams of protein",
         id: 2,
     },
     {
@@ -23,7 +23,7 @@ let mockRecipes = [
         instructions:"cut the salmon into pieces", 
         protein:"salmon",
         ingredients:"salt and pepper the salmon",
-        nutrition:"25 grams of protein",
+        nutrition:"999999 grams of protein",
         id: 3,
     },
 ]

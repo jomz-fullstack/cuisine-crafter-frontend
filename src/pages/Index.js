@@ -1,26 +1,25 @@
-import React from "react"
-import { Link } from "react-router-dom"
+// Index.js
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Index = ({ recipe, reviews }) => {
+const Index = ({ recipe }) => {
   return (
     <div>
       <h1>Recipe Page</h1>
       {recipe &&
-        recipe?.map((recipe, index) => {
-          return (
-            <div key={index}>
-              <h2>{recipe.name}</h2>
-              <Link to={`/reviews/${recipe.recipe_id}`}>View Reviews</Link>
-              <p>{recipe.image}</p>
-              <p>Ingredients: {recipe.ingredients}</p>
-              <p>{recipe.protein}</p>
-              <p>Instructions: {recipe.instructions}</p>
-              <p>{recipe.nutrition}</p>
-            </div>
-          )
-        })}
+        recipe.map((recipeItem) => (
+          <div key={recipeItem.id}>
+            <h2>{recipeItem.name}</h2>
+            <Link to={`/reviews/${recipeItem.id}`}>View Reviews</Link>
+            <p>{recipeItem.image}</p>
+            <p>Ingredients: {recipeItem.ingredients}</p>
+            <p>{recipeItem.protein}</p>
+            <p>Instructions: {recipeItem.instructions}</p>
+            <p>{recipeItem.nutrition}</p>
+          </div>
+        ))}
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

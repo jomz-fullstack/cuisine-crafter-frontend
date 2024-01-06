@@ -1,24 +1,18 @@
-// ReviewIndex.js
-import React from "react"
+import React from "react";
 
-const ReviewIndex = ({ reviews, recipeId }) => {
-  const recipeReviews = reviews?.filter(
-    (review) => review.recipe_id === parseInt(recipeId)
-  )
-
+const ReviewIndex = ({ review }) => {
   return (
     <div>
-      <h1>Reviews for Recipe {recipeId}</h1>
-      {recipeReviews &&
-        recipeReviews.map((review, index) => (
-          <div key={index}>
-            <h2>{review.header}</h2>
-            <p>{review.body}</p>
-            <p>Stars: {review.stars}</p>
-          </div>
-        ))}
+      <h1>All Reviews</h1>
+      {review.map((review) => (
+        <div key={review.id}>
+          <h2>{review.header}</h2>
+          <p>{review.body}</p>
+          <p>Stars: {review.stars}</p>
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default ReviewIndex
+export default ReviewIndex;
