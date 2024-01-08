@@ -6,8 +6,7 @@ const Index = ({ recipe }) => {
   return (
     <div>
       <h1>Recipe Page</h1>
-      {recipe &&
-        recipe.map((recipeItem) => (
+      {recipe.map((recipeItem) => (
           <div key={recipeItem.id}>
             <h2>{recipeItem.name}</h2>
             <Link to={`/reviews/${recipeItem.id}`}>View Reviews</Link>

@@ -1,25 +1,33 @@
-import React from "react"
-import { Nav, NavItem, Navbar, NavbarBrand, Button } from "reactstrap"
-import { NavLink, useNavigate } from "react-router-dom"
+import React from "react";
+import { Nav, NavItem } from "reactstrap";
+import { NavLink } from "react-router-dom";
+
 
 const Header = () => {
-
     return (
-        <Navbar className="my-2" color="secondary" dark>
-          <NavbarBrand>Cuisine Crafter</NavbarBrand>
-          <Nav justified>
-            <NavItem>
-              <NavLink to="/">Home</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/index">See Recipes</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/reviews">See All Reviews</NavLink>
-            </NavItem>
-          </Nav>
-        </Navbar>
-      )
-    }
-    
-    export default Header
+      <div className="header">
+        <div className="header-container" >
+        <h1>
+            Cuisine Crafter
+          </h1>
+          <div className="center" style={{ marginTop:"-20px"}}>
+            <Nav>
+              <NavItem>
+                <NavLink active to="/" className="nav-link">
+                  Home
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/index" className="nav-link">See all Recipes</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/reviews" className="nav-link">See all Reviews</NavLink>
+              </NavItem>
+            </Nav>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  
+  export default Header;

@@ -11,3 +11,24 @@
   align-items: center;
   display: flex;
 }
+
+/* -------- HEADER --------- */
+
+.header {
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.nav-link {
+  text-align: center;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+}

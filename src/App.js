@@ -36,23 +36,35 @@ const App = () => {
   const url = "http://localhost:3000/";
 
   const readRecipe = () => {
-    fetch(`${url}recipes`)
-      .then((response) => response.json())
+    fetch(`${url}index`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
+        console.log(data);
         setRecipe(data);
       })
-      .catch((error) => console.log("Recipe read errors: ", error));
+      .catch((error) => console.error("Recipe read errors: ", error));
   };
 
   const readReview = () => {
     fetch(`${url}reviews`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
-        console.log(data); 
+        console.log(data);
         setReview(data);
       })
-      .catch((error) => console.log("Review read errors: ", error));
+      .catch((error) => console.error("Review read errors: ", error));
   };
+  
   
 
   const handleChange1 = () => {
