@@ -1,7 +1,7 @@
 let mockRecipes = [
     {
         name: "MOCK - steak",
-        image:"https://media.istockphoto.com/id/1371751060/photo/,grilled-medium-rare-top-sirloin-beef-steak-or-rump-steak-on-a-steel-tray-dark-background-top.jpg?s=612x612&w=0&k=20&c=svqnTZV_l7DP0QPCG8L_-f6k7LuBUA-cH9wiL8eJqUs=",
+        image: "https://img.freepik.com/free-photo/juicy-steak-medium-rare-beef-with-spices-grilled-vegetables_24972-2328.jpg?size=626&ext=jpg&ga=GA1.1.1412446893.1704672000&semt=sph",
         instructions:"Add the oil to the pan and heat until it begins to shimmer and move fluidly around the pan.",
         protein:"steak",
         ingredients:"steak, oil, butter",

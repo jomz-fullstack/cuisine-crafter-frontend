@@ -20,9 +20,6 @@ const Header = () => {
               <NavItem>
                 <NavLink to="/index" className="nav-link">See all Recipes</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink to="/reviews" className="nav-link">See all Reviews</NavLink>
-              </NavItem>
             </Nav>
           </div>
         </div>

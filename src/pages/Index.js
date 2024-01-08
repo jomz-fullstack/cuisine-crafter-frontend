@@ -1,4 +1,3 @@
-// Index.js
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -8,7 +7,8 @@ const Index = ({ recipe }) => {
       <h1>Recipe Page</h1>
       {recipe.map((recipeItem) => (
           <div key={recipeItem.id}>
-            <h2>{recipeItem.name}</h2>
+            <Link to={`/show/${recipeItem.id}`}><h1>{recipeItem.name}</h1></Link>
+            <br/>
             <Link to={`/reviews/${recipeItem.id}`}>View Reviews</Link>
             <p>{recipeItem.image}</p>
             <p>Ingredients: {recipeItem.ingredients}</p>
