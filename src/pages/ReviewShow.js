@@ -1,9 +1,12 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React from "react"
+import { useParams, Link } from "react-router-dom"
+import { Button } from "reactstrap"
 
 const ReviewShow = ({ reviews }) => {
-  const { recipeId } = useParams();
-  const recipeReviews = reviews.filter((review) => review.recipe_id === +recipeId);
+  const { recipeId } = useParams()
+  const recipeReviews = reviews.filter(
+    (review) => review.recipe_id === +recipeId
+  )
 
   return (
     <div>
@@ -15,8 +18,11 @@ const ReviewShow = ({ reviews }) => {
           <p>Stars: {reviewItem.stars}</p>
         </div>
       ))}
+      <Link to={`/new/${recipeId}`}>
+        <button> Create a New Review</button>{" "}
+      </Link>
     </div>
-  );
-};
+  )
+}
 
-export default ReviewShow;
+export default ReviewShow
