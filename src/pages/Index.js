@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 const Index = ({ recipe }) => {
   return (
     <div>
-      <h1>Recipe Page</h1>
       {recipe.map((recipeItem) => (
           <div key={recipeItem.id}>
             <Link to={`/show/${recipeItem.id}`}><h1>{recipeItem.name}</h1></Link>
-            <br/>
+
             <img src={recipeItem.image} alt={recipeItem.name} style={{ height: "500px", width: "500px"}}/>
             <br/>
             <Link to={`/reviews/${recipeItem.id}`}>View Reviews</Link>
