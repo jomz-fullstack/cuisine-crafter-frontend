@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Index = ({ recipe }) => {
   return (
     <div>
-      {recipe.map((recipeItem) => (
+      {recipe?.map((recipeItem) => (
           <div key={recipeItem.id}>
             <Link to={`/show/${recipeItem.id}`}><h1>{recipeItem.name}</h1></Link>
 

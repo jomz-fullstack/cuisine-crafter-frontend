@@ -8,7 +8,6 @@ import New from "./pages/New";
 import NotFound from "./pages/NotFound";
 import Show from "./pages/Show";
 import ReviewShow from "./pages/ReviewShow";
-import ReviewIndex from "./pages/ReviewIndex";
 
 import mockUsers from "./mockUsers";
 import mockRecipes from "./mockRecipes";
@@ -52,7 +51,7 @@ const App = () => {
   };
 
   const readReview = () => {
-    fetch(`${url}reviews`)
+    fetch(`${url}reviews/:recipeId`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -93,9 +92,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/index" element={<Index recipe={recipe} />} />
-        <Route path="/reviews/:recipeId" element={<ReviewIndex reviews={review} />} />
+        <Route path="/reviews/:recipeId" element={<ReviewShow reviews={review} />} />
         <Route path="/show/:id" element={<Show recipes={recipe} />} />
-        <Route path="/reviewshow" element={<ReviewShow reviews={review}/>} />
         <Route path="/new" element={<New createReview={createReview} />} />
         <Route path="/edit" element={<Edit />} />
         <Route path="*" element={<NotFound />} />

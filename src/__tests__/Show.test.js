@@ -1,18 +1,32 @@
-import { BrowserRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react"
+import  mockRecipes  from "../mockRecipes"
 import Show from "../pages/Show";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 
-describe("<Show />", () => {
-    const renderShow = () => (
-        render (
-        <BrowserRouter>
-            <Show />
-        </BrowserRouter>
-        )
-    )
+const renderRecipeShow = () => {
+    render(
+      <MemoryRouter initialEntries={["/show/1"]}>
+        <Routes>
+          <Route
+            path="/show/:id"
+            element={<Show recipes={mockRecipes} />}
+          />
+        </Routes>
+      </MemoryRouter>
+    );
+  };
+  describe("<Show />", () => {
     it("renders without crashing", () => {
-        renderShow()
-    })
-    screen.logTestingPlaygroundURL();
-})
+      renderRecipeShow();
+      screen.logTestingPlaygroundURL();
+    });
+    it("renders a recipe", () => {
+        renderRecipeShow();
+        expect(
+          screen.getByText(mockRecipes[0].name, { exact: false })
+      ).toBeInTheDocument();
+    });
+});
+
+  

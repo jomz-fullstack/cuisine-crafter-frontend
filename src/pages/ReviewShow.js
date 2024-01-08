@@ -1,25 +1,22 @@
-import React from "react"
-import { useParams } from "react-router-dom"
-
+import React from "react";
+import { useParams } from "react-router-dom";
 
 const ReviewShow = ({ reviews }) => {
-    const { id } = useParams()
-    let selectedReview = reviews?.find((review) => review.id === +id)
+  const { recipeId } = useParams();
+  const recipeReviews = reviews.filter((review) => review.recipe_id === +recipeId);
 
-    return(
-        <div>
-            {selectedReview && (
-                <>
-                    <h1>{selectedReview.header}</h1>
-                    <h2>{selectedReview.stars}</h2>
-                    <h3>{selectedReview.body}</h3>
-                </>
-            )}
-
-
+  return (
+    <div>
+      <h1>All Reviews</h1>
+      {recipeReviews.map((reviewItem) => (
+        <div key={reviewItem.id}>
+          <h2>{reviewItem.header}</h2>
+          <p>{reviewItem.body}</p>
+          <p>Stars: {reviewItem.stars}</p>
         </div>
+      ))}
+    </div>
+  );
+};
 
-    )
-}
-
-export default ReviewShow
+export default ReviewShow;

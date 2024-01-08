@@ -1,16 +1,21 @@
 import { render, screen } from "@testing-library/react";
-import ReviewShow from "../pages/ReviewIndex";
+import ReviewShow from "../pages/ReviewShow";
 import mockReviews from "../mockReviews";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 
+const renderReviewShow = () => {
+  render(
+    <MemoryRouter initialEntries={["/reviews/1"]}>
+      <Routes>
+        <Route
+          path="/reviews/:recipeId"
+          element={<ReviewShow reviews={mockReviews} />}
+        />
+      </Routes>
+    </MemoryRouter>
+  );
+};
 describe("<ReviewShow />", () => {
-  const renderReviewShow = () =>
-    render(
-      <BrowserRouter>
-        <ReviewShow reviews={mockReviews} />
-      </BrowserRouter>
-    );
-
   it("renders without crashing", () => {
     renderReviewShow();
   });
@@ -18,16 +23,11 @@ describe("<ReviewShow />", () => {
   it("renders review headers", () => {
     renderReviewShow();
     screen.logTestingPlaygroundURL();
-
-    mockReviews.forEach((review) => {
-      const reviewHeader = screen.getByText(review.header);
-      expect(reviewHeader).toBeInTheDocument(
-        `Review header "${review.header}" should be present`
-      );
-    });
   });
-
-  // mockReviews.forEach((review) => {
-  //   const reviewHeader = screen.getByText(review.header);
-  //   expect(reviewHeader, {exact: false}).toBeInTheDocument();
+  it("renders a review", () => {
+    renderReviewShow();
+    expect(
+      screen.getByText(mockReviews[0].header, { exact: false })
+    ).toBeInTheDocument();
+  });
 });
