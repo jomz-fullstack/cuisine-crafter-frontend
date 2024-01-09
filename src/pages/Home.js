@@ -1,34 +1,53 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import SuggestedRecipes from "../components/SuggestedRecipes";
+import mockRecipes from "../mockRecipes";
+import HomeImage from "../assets/HomeImage.png";
 
 const Home = () => {
-  const [checked1, setChecked1] = useState(false)
-  const [checked2, setChecked2] = useState(false)
+  const [checkedItems, setCheckedItems] = useState({});
+  const proteinOptions = [
+    "Beef",
+    "Chicken",
+    "Tofu",
+    "Duck",
+    "Veal",
+    "Pork",
+    "Turkey",
+    "Lamb",
+    "Crab",
+    "Oyster",
+    "Scallops",
+    "Clams",
+    "Eggs",
+  ];
 
-  const handleChange1 = () => {
-    setChecked1(!checked1)
-  }
+  const handleChange = (protein) => {
+    setCheckedItems((prevItems) => ({
+      ...prevItems,
+      [protein]: !prevItems[protein],
+    }));
+  };
 
-  const handleChange2 = () => {
-    setChecked2(!checked2)
-  }
-
-  const Checkbox = ({ label, value, onChange }) => {
-    return (
-      <label>
-        <input type="checkbox" checked={value} onChange={onChange} />
-        {label}
-      </label>
-    )
-  }
 
   return (
-    <div>
-      <h2>Pick your Protein</h2>
-      <Checkbox label="Beef" value={checked1} onChange={handleChange1} />
+    <div className="checkbox-container">
+      <img src={HomeImage} style={{ width:"100%", height:"auto"}}/>
+      <p className="home-header" >Pick your Protein</p>
+      {proteinOptions.map((protein) => (
+        <label key={protein} className="checkboxes">
+          <input
+            type="checkbox"
+            checked={checkedItems[protein] || false}
+            onChange={() => handleChange(protein)}
+          />
+          {protein}
+        </label>
+      ))}
       <br />
-      <Checkbox label="Chicken" value={checked2} onChange={handleChange2} />
+      <button>Find Recipes</button>
+      <SuggestedRecipes recipes={mockRecipes} />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
