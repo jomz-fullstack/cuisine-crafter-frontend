@@ -7,8 +7,7 @@ const ReviewShow = ({ reviews }) => {
     (review) => review.recipe_id === +recipeId
   );
 
-  let selectedReview = reviews?.find((review) => review.id === +recipeId)
-
+  // Define the renderStars function
   const renderStars = (rating) => {
     const starElements = [];
     for (let i = 1; i <= 5; i++) {
@@ -21,6 +20,7 @@ const ReviewShow = ({ reviews }) => {
             marginRight: "1px",
           }}
         >
+          ★
         </span>
       );
     }
@@ -35,12 +35,14 @@ const ReviewShow = ({ reviews }) => {
       </Link>
       {recipeReviews.map((reviewItem) => (
         <div key={reviewItem.id}>
-          <h2>{reviewItem.header}</h2>
+          <h2>{reviewItem.header}{" "}
+          <Link to={`/edit/${reviewItem.id}`}>
+            <button>Edit Review</button>
+          </Link></h2>
           <p>{reviewItem.body}</p>
           {renderStars(reviewItem.stars)}
           <br />
-          <Link to={`/edit/${selectedReview.id}`}>
-          <button> Edit Review </button></Link>
+
         </div>
       ))}
     </div>
