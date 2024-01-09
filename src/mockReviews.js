@@ -3,14 +3,14 @@ let mockReviews = [
     id: 1,
     header: "MOCK - Taste delicious",
     body: "the pasta was very creamy",
-    stars: 1,
+    stars: 5,
     recipe_id: 1,
   },
   {
     id: 2,
     header: "MOCK - It was not that great",
     body: "the steak was over cooked",
-    stars: 1,
+    stars: 3,
     recipe_id: 2,
   },
   {

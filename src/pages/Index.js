@@ -1,21 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardLink,
+} from "reactstrap";
 
 const Index = ({ recipe }) => {
   return (
-    <div>
+    <div className="card-container">
       {recipe?.map((recipeItem) => (
-          <div key={recipeItem.id}>
-            <Link to={`/show/${recipeItem.id}`}><h1>{recipeItem.name}</h1></Link>
-
-            <img src={recipeItem.image} alt={recipeItem.name} style={{ height: "500px", width: "500px"}}/>
-            <br/>
-            <Link to={`/reviews/${recipeItem.id}`}>View Reviews</Link>
-            <p>Ingredients: {recipeItem.protein},{" "}{recipeItem.ingredients}</p>
-            <p>Instructions: {recipeItem.instructions}</p>
-            <p>{recipeItem.nutrition}</p>
-          </div>
-        ))}
+        <div key={recipeItem.id}>
+          <Card className="card">
+            <CardBody>
+              <CardTitle tag="h5" className="card-title">{recipeItem.name}</CardTitle>
+            </CardBody>
+            <img
+              alt="Card cap"
+              src={recipeItem.image}
+              width="100%"
+            />
+            <CardBody className="card-link">
+              <CardLink href={`/show/${recipeItem.id}`}>Recipe</CardLink>{" "}
+              <CardLink href={`/reviews/${recipeItem.id}`}>Reviews</CardLink>
+            </CardBody>
+          </Card>
+        </div>
+      ))}
     </div>
   );
 };

@@ -10,17 +10,21 @@ const New = ({ createReview }) => {
     body: "",
     stars: 0,
   })
+
   const handleChange = (e) => {
     setNewReview({ ...newReview, [e.target.name]: e.target.value })
   }
+
   const handleRatingChange = (newRating) => {
     setNewReview({ ...newReview, stars: newRating })
   }
+
   const handleSubmit = () => {
     createReview(newReview, recipeId)
     navigate(`/reviews/${recipeId}`)
+    console.log(handleSubmit)
   }
-  console.log(handleSubmit)
+
   return (
     <div>
       <h1>Review Page</h1>
@@ -53,4 +57,5 @@ const New = ({ createReview }) => {
     </div>
   )
 }
+
 export default New
