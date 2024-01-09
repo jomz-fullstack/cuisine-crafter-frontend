@@ -7,6 +7,8 @@ const ReviewShow = ({ reviews }) => {
     (review) => review.recipe_id === +recipeId
   );
 
+  let selectedReview = reviews?.find((review) => review.id === +recipeId)
+
   const renderStars = (rating) => {
     const starElements = [];
     for (let i = 1; i <= 5; i++) {
@@ -19,7 +21,6 @@ const ReviewShow = ({ reviews }) => {
             marginRight: "1px",
           }}
         >
-          ★
         </span>
       );
     }
@@ -37,6 +38,9 @@ const ReviewShow = ({ reviews }) => {
           <h2>{reviewItem.header}</h2>
           <p>{reviewItem.body}</p>
           {renderStars(reviewItem.stars)}
+          <br />
+          <Link to={`/edit/${selectedReview.id}`}>
+          <button> Edit Review </button></Link>
         </div>
       ))}
     </div>

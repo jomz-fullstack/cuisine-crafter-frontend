@@ -44,8 +44,8 @@ const App = () => {
       .catch((error) => console.error("Recipe read errors: ", error))
   }
 
-  const readReview = () => {
-    fetch(`${url}reviews/:recipeId`)
+  const readReview = (recipeId) => {
+    fetch(`${url}reviews/${recipeId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`)
@@ -59,8 +59,33 @@ const App = () => {
       .catch((error) => console.error("Review read errors: ", error))
   }
 
-  const createReview = (review, recipeId) => {
-    console.log(review, recipeId)
+  const createReview = (createReview, recipeId) => {
+    fetch(`${url}new/${recipeId}`, {
+      body: JSON.stringify(createReview),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => response.json())
+      .then(() => readReview())
+      .catch((error) => console.log("Review create errors:", error))
+
+  };
+
+  const updateReview = (selectedReview, id) => {
+    console.log("selectedReview", selectedReview)
+    console.log("id" , id)
+    fetch(`${url}reviews/${id}` , {
+    body: JSON.stringify(selectedReview),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "PATCH",
+  })
+  .then((response) => response.json())
+  .then(() => readReview())
+  .catch((error) => console.log("Update review errors: ", error))
   }
 
   return (
@@ -78,7 +103,7 @@ const App = () => {
           path="/new/:recipeId"
           element={<New createReview={createReview} />}
         />
-        <Route path="/edit" element={<Edit />} />
+        <Route path="/edit/:id" element={<Edit updateReview={updateReview} reviews={review} currentUser={currentUser}/>}  />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
