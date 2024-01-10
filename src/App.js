@@ -18,9 +18,9 @@ import { Routes, Route } from "react-router-dom"
 import "./App.css"
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(mockUsers)
-  const [recipe, setRecipe] = useState(mockRecipes)
-  const [review, setReview] = useState(mockReviews)
+  const [currentUser, setCurrentUser] = useState(null)
+  const [recipe, setRecipe] = useState([])
+  const [review, setReview] = useState([])
 
   useEffect(() => {
     readRecipe()
@@ -30,13 +30,8 @@ const App = () => {
   const url = "http://localhost:3000/"
 
   const readRecipe = () => {
-    fetch(`${url}index`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`)
-        }
-        return response.json()
-      })
+    fetch(`${url}recipes`)
+      .then((response) => response.json())
       .then((data) => {
         console.log(data)
         setRecipe(data)
@@ -45,7 +40,7 @@ const App = () => {
   }
 
   const readReview = (recipeId) => {
-    fetch(`${url}reviews/${recipeId}`)
+    fetch(`${url}reviews/`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`)
@@ -59,8 +54,8 @@ const App = () => {
       .catch((error) => console.error("Review read errors: ", error))
   }
 
-  const createReview = (createReview, recipeId) => {
-    fetch(`${url}new/${recipeId}`, {
+  const createReview = (createReview) => {
+    fetch(`${url}reviews/`, {
       body: JSON.stringify(createReview),
       headers: {
         "Content-Type": "application/json",
@@ -73,10 +68,10 @@ const App = () => {
 
   };
 
-  const updateReview = (selectedReview, id) => {
+  const updateReview = (selectedReview) => {
     console.log("selectedReview", selectedReview)
-    console.log("id" , id)
-    fetch(`${url}reviews/${id}` , {
+    console.log("id")
+    fetch(`${url}reviews/` , {
     body: JSON.stringify(selectedReview),
     headers: {
       "Content-Type": "application/json",

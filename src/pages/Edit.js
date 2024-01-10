@@ -8,11 +8,11 @@ const Edit = ({ reviews, updateReview, currentUser }) => {
     const navigate = useNavigate()
     let selectedReview = reviews?.find((review) => review.id === +id)
     const [editReview, setEditReview] = useState({
-      header: selectedReview.header,
-      body: selectedReview.body,
-      stars: selectedReview.stars,
-      id: selectedReview.id,
-      user_id: currentUser.id
+      header: selectedReview?.header,
+      body: selectedReview?.body,
+      stars: selectedReview?.stars,
+      // id: selectedReview?.id,
+      // user_id: currentUser?.id,
     })
   
     const handleChange = (e) => {
@@ -24,8 +24,8 @@ const Edit = ({ reviews, updateReview, currentUser }) => {
     }
   
     const handleSubmit = () => {
-      updateReview(editReview, selectedReview.id)
-      navigate(`/reviews/${id}`)
+      updateReview(editReview, selectedReview)
+      navigate('/index')
     }
   
     return (

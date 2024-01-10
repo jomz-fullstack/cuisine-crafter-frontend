@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 
 const ReviewShow = ({ reviews }) => {
-  const { recipeId } = useParams();
+  const { recipeId, id } = useParams();
   const recipeReviews = reviews.filter(
     (review) => review.recipe_id === +recipeId
   );
@@ -36,7 +36,7 @@ const ReviewShow = ({ reviews }) => {
       {recipeReviews.map((reviewItem) => (
         <div key={reviewItem.id}>
           <h2>{reviewItem.header}{" "}
-          <Link to={`/edit/${reviewItem.id}`}>
+          <Link to={`/edit/${id}`}>
             <button>Edit Review</button>
           </Link></h2>
           <p>{reviewItem.body}</p>
