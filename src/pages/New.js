@@ -2,13 +2,17 @@ import React, { useState } from "react"
 import { Form, FormGroup, Input, Label, Button } from "reactstrap"
 import { useNavigate, useParams } from "react-router-dom"
 import ReactStarRating from "react-star-ratings-component"
-const New = ({ createReview }) => {
+
+const New = ({ createReview, currentUser }) => {
+  console.log(currentUser)
   const { recipeId } = useParams()
   const navigate = useNavigate()
   const [newReview, setNewReview] = useState({
     header: "",
     body: "",
     stars: 0,
+    user_id: currentUser.id,
+    recipe_id: parseInt(recipeId),
   })
 
   const handleChange = (e) => {
@@ -22,7 +26,7 @@ const New = ({ createReview }) => {
   const handleSubmit = () => {
     createReview(newReview, recipeId)
     navigate(`/reviews/${recipeId}`)
-    console.log(handleSubmit)
+
   }
 
   return (
@@ -31,11 +35,11 @@ const New = ({ createReview }) => {
       <Form>
         <FormGroup>
           <Label for="header">Review Header</Label>
-          <Input type="text" name="header" onChange={handleChange} />
+          <Input type="text" name="header" onChange={handleChange}  value={newReview.header}/>
         </FormGroup>
         <FormGroup>
           <Label for="body">Review Body</Label>
-          <Input type="text" name="body" onChange={handleChange} />
+          <Input type="text" name="body" onChange={handleChange} value={newReview.body}/>
         </FormGroup>
         <FormGroup>
           <Label for="stars">Rating</Label>

@@ -1,31 +1,52 @@
-import React, { formRef } from "react";
-import { NavLink } from "react-router-dom";
-import { Nav, NavItem } from "reactstrap";
+import { useRef } from "react"
+import { useNavigate } from "react-router-dom"
 
-const LogIn = () => {
-  const handleSubmit = () => {};
+const Login = ({ login }) => {
+  const formRef = useRef()
+  const navigate = useNavigate()
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = new FormData(formRef.current)
+    const data = Object.fromEntries(formData)
+    const userInfo = {
+      user: { email: data.email, password: data.password },
+    }
+    login(userInfo)
+    navigate("/")
+    e.target.reset()
+  }
+  
   return (
-    <>
-      <h1>Log in Page</h1>
-      <form ref={formRef} onSubmit={handleSubmit} className="input-container">
-        Email: <input type="email" name="email" placeholder="email" required className="login-input-box"/>
+    <div className="auth-body">
+      <h2 className="header">Login</h2>
+      <form className="form-div" ref={formRef} onSubmit={handleSubmit}>
+        Email:{" "}
+        <input
+          className="field auth-flex"
+          type="email"
+          name="email"
+          placeholder="email"
+        />
         <br />
         Password:{" "}
-        <input type="password" name="password" placeholder="password" required className="login-input-box"/>
+        <input
+          className="field auth-flex"
+          type="password"
+          name="password"
+          placeholder="password"
+        />
         <br />
-        <button type="sumbit" value="Submit" className="login-submit">Log In</button>
-        <br />
+        <input className="actions" type="submit" value="Login" />
+        <div className="links">
+          Not registered yet?
+          <a href="/signup">
+            {" "}
+            <u>Signup</u>
+          </a>
+        </div>
       </form>
-      <Nav className="sign-up">
-        <NavItem>
-          <NavLink to="/signup">
-            <h3>No account? Sign up!</h3>
-          </NavLink>
-        </NavItem>
-      </Nav>
-    </>
-  );
-};
-
-export default LogIn;
+    </div>
+  )
+}
+export default Login
