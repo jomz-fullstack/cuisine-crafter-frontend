@@ -1,34 +1,354 @@
+/* -------- GENERAL --------- */
+* {
+  font-family: 'Overlock SC', sans-serif;
+  text-align: center;
+}
+
+body {
+  margin-top: 109px;
+}
+
+/* -------- HEADER --------- */
+
+.header-container {
+  border: 2px solid transparent;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background-color: black;
+  color: white;
+  top: 0;
+}
+
+.navlink-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border: 2px solid none;
+  list-style-type: none;
+  color: black;
+  font-size: 2rem;
+  color: white;
+}
+
+.logo-container {
+  position: absolute;
+  left: 0;
+  margin-right: 10px; 
+  border: 2px solid none;
+  color: white;
+  list-style: none;
+}
+
+.logo {
+  height: 100px;
+  margin-right: 10px;
+  color: white;
+}
+
+.main-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-weight: bold;
+  border: 2px solid none;
+  color: white;
+  position: absolute;
+  left: 100px;
+  top: 50%; /* Adjust as needed */
+  transform: translateY(-50%);
+}
+
+/* .main-head:hover {
+  color: pink;
+} */
+
+.navlink-container a {
+  text-decoration: none;
+  margin-right: 20px;
+  transition: 0.5s ease;
+}
+
+.navlink-container a:hover {
+  color: pink !important;
+  letter-spacing: 4px;
+}
+.navlink-container a:visited {
+  color: inherit;
+}
+
+.header-link {
+  background-color: transparent;
+}
+
+.sign-in {
+  border: 2px solid transparent;
+  margin-left: auto;
+  margin-top: 10px;
+  width: fit-content;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 10px;
+  color: white;
+}
+
+.sign-in button {
+  height: 50px;
+  width: 100px;
+  font-size: 1.5rem;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+.sign-in button:hover {
+  color: pink;
+}
+
+/* -------- Home --------- */
+
+.checkbox-container {
+  border: 2px solid transparent;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-header {
+  font-size: 2rem;
+  font-weight: bold;
+  border: 2px solid transparent;
+  margin-top: 0;
+}
+
+.checkboxes {
+  margin-bottom: 10px;
+  margin-right: 5px;
+  display: inline-block;
+  border: 2px solid transparent;
+
+}
+
+.checkboxes input[type="checkbox"] {
+  transform: scale(2); 
+  margin-right: 15px;
+}
+
+/* -------- Suggested Recipes --------- */
+
+.suggested-recipes-container {
+  display: flex;
+  justify-content: space-around; 
+  border: 2px solid transparent
+}
+
+.suggested-recipe {
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.circular-image {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto;
+  border: 9px solid black;
+  transition: 0.5s ease;
+}
+
+.circular-image:hover {
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); 
+}
+
+.circular-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 /* -------- FOOTER --------- */
-.footer {
+
+.footer-container {
   position: fixed;
   bottom: 0;
   background-color: black;
   width: 100%;
   color: white;
   text-align: center;
-  height: 30px;
-  justify-content: center;
-  align-items: center;
+  height: 20px;
   display: flex;
-}
-
-/* -------- HEADER --------- */
-
-.header {
-  text-align: center;
-}
-
-.center {
-  display: flex;
-  margin: 0 auto;
-  justify-content: center;
   align-items: center;
-  padding: 10px;
+  justify-content: center;
 }
 
-.nav-link {
-  text-align: center;
+
+
+
+/* -------- Review Show Page --------- */
+
+
+
+/* -------- Recipe Show Page --------- */
+
+.recipe-container img {
+  height: 600px; 
+  width: auto;
+}
+
+/* -------- New Review Page --------- */
+
+
+
+/* -------- Index (Recipe) Page --------- */
+
+.card-container {
+  flex-wrap: wrap;
   justify-content: space-around;
   display: flex;
-  align-items: center;
+  margin: 0 auto;
+  padding: 10px;
+  position: static;
+  margin-bottom: 50px;
+  border: 2px solid transparent;
+  margin-bottom: 20px; 
+
 }
+
+
+.card {
+  position: relative;
+  border: 2px solid black;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  width: 18rem;
+  transition: 0.5s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); 
+}
+
+
+.card-title {
+  position: absolute;
+  top: -30px; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  text-align: center;
+  width: 100%;
+  border: 2px solid transparent;
+}
+
+
+.card img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.card-link {
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  height: 30px;
+  border: 2px solid transparent;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.index-link {
+  transition: 0.5s ease;
+}
+.index-link:hover {
+  color: pink;
+  letter-spacing: 5px;
+}
+
+.card-link:first-child {
+  margin-right: 10px; 
+}
+
+.card-link:last-child {
+  margin-left: 10px; 
+}
+
+
+/* -------- Edit Page --------- */
+
+/* -------- Log In Page --------- */
+.sign-up {
+  list-style-type: none;
+  border: 2px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  text-decoration: none;
+}
+
+
+
+.input-container {
+  font-size: 25px;
+}
+
+.login-input-box {
+  margin-bottom: 10px;
+  height: 30px;
+  width: 300px;
+  font-size: 25px;
+  border: none;
+  background-color: rgb(181, 181, 181);
+}
+
+.login-input-box::placeholder {
+  color: rgb(140, 140, 140);
+}
+
+.login-submit {
+  margin-top: 10px;
+  height: 30px;
+  width: 110px;
+  font-size: 25px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  line-height: 10px; 
+  border-right: none;
+  border-left: none;
+  transition: 0.5s ease;
+}
+
+.login-submit:hover {
+  background-color: rgb(181, 181, 181);
+  letter-spacing: 4px;
+}
+
+
+
+/* -------- Sign Up Page --------- */
+
+
+
+
+/* -------- Not Found Page --------- */
+
+
+

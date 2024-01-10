@@ -8,19 +8,18 @@ import New from "./pages/New"
 import NotFound from "./pages/NotFound"
 import Show from "./pages/Show"
 import ReviewShow from "./pages/ReviewShow"
-
-import mockUsers from "./mockUsers"
-import mockRecipes from "./mockRecipes"
-import mockReviews from "./mockReviews"
+import AboutUs from "./pages/AboutUs"
+import SignUp from "./pages/SignUp"
+import LogIn from "./pages/LogIn"
 
 import { Routes, Route } from "react-router-dom"
 
 import "./App.css"
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(mockUsers)
-  const [recipe, setRecipe] = useState(mockRecipes)
-  const [review, setReview] = useState(mockReviews)
+  const [currentUser, setCurrentUser] = useState(null)
+  const [recipe, setRecipe] = useState([])
+  const [review, setReview] = useState([])
 
   useEffect(() => {
     readRecipe()
@@ -30,13 +29,8 @@ const App = () => {
   const url = "http://localhost:3000/"
 
   const readRecipe = () => {
-    fetch(`${url}index`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`)
-        }
-        return response.json()
-      })
+    fetch(`${url}recipes`)
+      .then((response) => response.json())
       .then((data) => {
         console.log(data)
         setRecipe(data)
@@ -44,8 +38,8 @@ const App = () => {
       .catch((error) => console.error("Recipe read errors: ", error))
   }
 
-  const readReview = () => {
-    fetch(`${url}reviews/:recipeId`)
+  const readReview = (recipeId) => {
+    fetch(`${url}reviews/`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`)
@@ -59,15 +53,41 @@ const App = () => {
       .catch((error) => console.error("Review read errors: ", error))
   }
 
-  const createReview = (review, recipeId) => {
-    console.log(review, recipeId)
+  const createReview = (createReview) => {
+    fetch(`${url}reviews/`, {
+      body: JSON.stringify(createReview),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => response.json())
+      .then(() => readReview())
+      .catch((error) => console.log("Review create errors:", error))
+  }
+
+  const updateReview = (selectedReview) => {
+    console.log("selectedReview", selectedReview)
+    console.log("id")
+    fetch(`${url}reviews/${selectedReview.id}`, {
+      body: JSON.stringify(selectedReview),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "PATCH",
+    })
+      .then((response) => response.json())
+      .then(() => readReview())
+      .catch((error) => console.log("Update review errors: ", error))
   }
 
   return (
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home recipe={recipe} />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} />
         <Route path="/index" element={<Index recipe={recipe} />} />
         <Route
           path="/reviews/:recipeId"
@@ -78,7 +98,17 @@ const App = () => {
           path="/new/:recipeId"
           element={<New createReview={createReview} />}
         />
-        <Route path="/edit" element={<Edit />} />
+        <Route
+          path="/edit/:id"
+          element={
+            <Edit
+              updateReview={updateReview}
+              reviews={review}
+              currentUser={currentUser}
+            />
+          }
+        />
+        <Route path="/aboutus" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
