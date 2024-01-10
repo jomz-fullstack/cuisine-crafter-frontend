@@ -1,18 +1,15 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom"
 import { render, screen } from "@testing-library/react"
-import NotFound from "../pages/NotFound";
-
+import NotFound from "../pages/NotFound"
 
 describe("<NotFound />", () => {
-    const renderNotFound = () => (
-        render (
-        <BrowserRouter>
-            <NotFound />
-        </BrowserRouter>
-        )
+  const renderNotFound = () =>
+    render(
+      <BrowserRouter>
+        <NotFound />
+      </BrowserRouter>
     )
-    it("renders without crashing", () => {
-        renderNotFound()
-    })
-    screen.logTestingPlaygroundURL();
+  it("renders without crashing", () => {
+    renderNotFound()
+  })
 })

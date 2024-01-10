@@ -14,5 +14,5 @@ describe("<Header />", () => {
     it("renders without crashing", () => {
         renderHeader()
     })
-    screen.logTestingPlaygroundURL();
+
 })

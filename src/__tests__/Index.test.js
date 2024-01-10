@@ -14,5 +14,5 @@ describe("<Index />", () => {
     it("renders without crashing", () => {
         renderIndex()
     })
-    screen.logTestingPlaygroundURL();
+ 
 })

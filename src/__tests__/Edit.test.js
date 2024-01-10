@@ -12,7 +12,6 @@ describe("<Edit />", () => {
 
   it("renders without crashing", () => {
     renderEdit()
-    screen.logTestingPlaygroundURL()
   })
 
   it("renders review edit header", () => {

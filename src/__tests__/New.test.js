@@ -12,7 +12,7 @@ describe("<New />", () => {
   }
   it("renders without crashing", () => {
     renderNew()
-    screen.logTestingPlaygroundURL()
+ 
   })
   it("renders review title", () => {
     renderNew()

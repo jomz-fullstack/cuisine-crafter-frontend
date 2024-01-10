@@ -1,8 +1,8 @@
-import React, { useState, formRef } from "react";
-import { Nav, NavItem } from "reactstrap";
-import { NavLink, useNavigate } from "react-router-dom";
-import Logo from "../assets/CC2.png";
-import HoverLogo from "../assets/CC2Reverse.png";
+import React, { useState, formRef } from "react"
+import { Nav, NavItem } from "reactstrap"
+import { NavLink, useNavigate } from "react-router-dom"
+import Logo from "../assets/CC2.png"
+import HoverLogo from "../assets/CC2Reverse.png"
 import {
   Button,
   Form,
@@ -13,33 +13,20 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-} from "reactstrap";
+} from "reactstrap"
 
 const Header = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
+    setIsHovered(true)
+  }
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  // const toggleModal = () => {
-  //   setIsModalOpen(!isModalOpen);
-  // };
-
-  // const handleConfirmSubmit = () => {
-  //   toggleModal();
-  // };
-
-  // const handleSubmit = () => {
-  //   toggleModal();
-  // };
+    setIsHovered(false)
+  }
 
   return (
     <div className="header-container">
@@ -80,42 +67,14 @@ const Header = () => {
             </NavLink>
           </NavItem>
           <NavItem>
-        <NavLink to="/login" className="sign-in">
-          Sign In
-        </NavLink>
-        {/* <div>
-          <Modal isOpen={isModalOpen} toggle={toggleModal} centered>
-            <ModalHeader toggle={toggleModal}>Modal title</ModalHeader>
-            <ModalBody>
-              <Form ref={formRef} onSubmit={handleSubmit}>
-                Email: <Input type="email" name="email" placeholder="email" />
-                <br />
-                Password:{" "}
-                <Input
-                  type="password"
-                  name="password"
-                  placeholder="password"
-                />
-              </Form>
-            </ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={handleConfirmSubmit}>
-                Log In
-              </Button>{" "}
-              <Button color="primary" onClick={toggleModal}>
-                Sign Up
-              </Button>{" "}
-              <Button color="secondary" onClick={toggleModal}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </Modal>
-        </div> */}
-      </NavItem>
+            <NavLink to="/login" className="sign-in">
+              Sign In
+            </NavLink>
+          </NavItem>
         </Nav>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

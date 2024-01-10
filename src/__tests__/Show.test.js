@@ -19,7 +19,7 @@ const renderRecipeShow = () => {
   describe("<Show />", () => {
     it("renders without crashing", () => {
       renderRecipeShow();
-      screen.logTestingPlaygroundURL();
+    
     });
     it("renders a recipe", () => {
         renderRecipeShow();
