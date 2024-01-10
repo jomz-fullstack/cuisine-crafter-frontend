@@ -81,6 +81,18 @@ const App = () => {
       .catch((error) => console.log("Update review errors: ", error))
   }
 
+  const deleteReview = (id) => {
+    fetch(`${url}reviews/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then(() => readReview())
+      .catch((errors) => console.log("delete errors:", errors))
+  }
+
   return (
     <div>
       <Header />
@@ -91,7 +103,7 @@ const App = () => {
         <Route path="/index" element={<Index recipe={recipe} />} />
         <Route
           path="/reviews/:recipeId"
-          element={<ReviewShow reviews={review} />}
+          element={<ReviewShow reviews={review} deleteReview={deleteReview} />}
         />
         <Route path="/show/:id" element={<Show recipes={recipe} />} />
         <Route

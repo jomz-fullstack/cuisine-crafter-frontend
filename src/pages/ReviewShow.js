@@ -1,7 +1,7 @@
 import React from "react"
 import { useParams, Link } from "react-router-dom"
 
-const ReviewShow = ({ reviews }) => {
+const ReviewShow = ({ reviews, deleteReview }) => {
   const { recipeId } = useParams()
   const recipeReviews = reviews.filter(
     (review) => review.recipe_id === +recipeId
@@ -44,6 +44,11 @@ const ReviewShow = ({ reviews }) => {
           <p>{reviewItem.body}</p>
           {renderStars(reviewItem.stars)}
           <br />
+          <Link to={"/"}>
+            <button onClick={() => deleteReview(reviewItem.id)}>
+              Delete Review
+            </button>
+          </Link>
         </div>
       ))}
     </div>
