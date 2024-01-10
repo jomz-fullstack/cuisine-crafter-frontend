@@ -14,5 +14,5 @@ describe("<Home />", () => {
     it("renders without crashing", () => {
         renderHome()
     })
-    screen.logTestingPlaygroundURL();
+
 })

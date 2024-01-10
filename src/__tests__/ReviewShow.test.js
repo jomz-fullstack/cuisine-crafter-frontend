@@ -22,7 +22,7 @@ describe("<ReviewShow />", () => {
 
   it("renders review headers", () => {
     renderReviewShow();
-    screen.logTestingPlaygroundURL();
+   
   });
   it("renders a review", () => {
     renderReviewShow();

@@ -14,5 +14,5 @@ describe("<Footer />", () => {
     it("renders without crashing", () => {
         renderFooter()
     })
-    screen.logTestingPlaygroundURL();
+   
 })
