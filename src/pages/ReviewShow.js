@@ -44,7 +44,7 @@ const ReviewShow = ({ reviews, deleteReview }) => {
           <p>{reviewItem.body}</p>
           {renderStars(reviewItem.stars)}
           <br />
-          <Link to={"/"}>
+          <Link to={"/reviews/:recipeId"}>
             <button onClick={() => deleteReview(reviewItem.id)}>
               Delete Review
             </button>
