@@ -8,10 +8,9 @@ import New from "./pages/New"
 import NotFound from "./pages/NotFound"
 import Show from "./pages/Show"
 import ReviewShow from "./pages/ReviewShow"
-
-import mockUsers from "./mockUsers"
-import mockRecipes from "./mockRecipes"
-import mockReviews from "./mockReviews"
+import AboutUs from "./pages/AboutUs"
+import SignUp from "./pages/SignUp"
+import LogIn from "./pages/LogIn"
 
 import { Routes, Route } from "react-router-dom"
 
@@ -71,7 +70,7 @@ const App = () => {
   const updateReview = (selectedReview) => {
     console.log("selectedReview", selectedReview)
     console.log("id")
-    fetch(`${url}reviews/` , {
+    fetch(`${url}reviews` , {
     body: JSON.stringify(selectedReview),
     headers: {
       "Content-Type": "application/json",
@@ -87,7 +86,9 @@ const App = () => {
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home recipe={recipe}/>} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} />
         <Route path="/index" element={<Index recipe={recipe} />} />
         <Route
           path="/reviews/:recipeId"
@@ -99,6 +100,7 @@ const App = () => {
           element={<New createReview={createReview} />}
         />
         <Route path="/edit/:id" element={<Edit updateReview={updateReview} reviews={review} currentUser={currentUser}/>}  />
+        <Route path="/aboutus" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

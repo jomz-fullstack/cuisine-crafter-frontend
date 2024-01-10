@@ -3,7 +3,7 @@ import SuggestedRecipes from "../components/SuggestedRecipes";
 import mockRecipes from "../mockRecipes";
 import HomeImage from "../assets/HomeImage.png";
 
-const Home = () => {
+const Home = ({recipe}) => {
   const [checkedItems, setCheckedItems] = useState({});
   const proteinOptions = [
     "Beef",
@@ -31,7 +31,7 @@ const Home = () => {
 
   return (
     <div className="checkbox-container">
-      <img src={HomeImage} style={{ width:"100%", height:"auto"}}/>
+      <img src={HomeImage} style={{ width:"100%", height:"auto", borderBottom:"5px solid black"}}/>
       <p className="home-header" >Pick your Protein</p>
       {proteinOptions.map((protein) => (
         <label key={protein} className="checkboxes">
@@ -45,7 +45,7 @@ const Home = () => {
       ))}
       <br />
       <button>Find Recipes</button>
-      <SuggestedRecipes recipes={mockRecipes} />
+      <SuggestedRecipes recipes={recipe} />
     </div>
   );
 };

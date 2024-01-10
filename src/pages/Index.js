@@ -21,8 +21,8 @@ const Index = ({ recipe }) => {
               width="100%"
             />
             <CardBody className="card-link">
-              <CardLink href={`/show/${recipeItem.id}`}>Recipe</CardLink>{" "}
-              <CardLink href={`/reviews/${recipeItem.id}`}>Reviews</CardLink>
+              <CardLink href={`/show/${recipeItem.id}`} className="index-link" style={{position:"absolute", left:"30px", bottom: "20px"}}>Recipe</CardLink>{" "}
+              <CardLink href={`/reviews/${recipeItem.id}`} className="index-link" style={{position:"absolute", right:"30px", bottom: "20px"}}>Reviews</CardLink>
             </CardBody>
           </Card>
         </div>

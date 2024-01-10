@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 const SuggestedRecipes = ({ recipes }) => {
-  const selectedRecipes = recipes.slice(0, 3);
+  const selectedRecipes = recipes.slice(2, 5);
 
   return (
     <div>
