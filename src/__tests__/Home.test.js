@@ -1,18 +1,16 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom"
 import { render, screen } from "@testing-library/react"
-import Home from "../pages/Home";
-
+import Home from "../pages/Home"
 
 describe("<Home />", () => {
-    const renderHome = () => (
-        render (
-        <BrowserRouter>
-            <Home />
-        </BrowserRouter>
-        )
+  const renderHome = () =>
+    renderHome(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
     )
-    it("renders without crashing", () => {
-        renderHome()
-    })
-
+  it("renders without crashing", () => {
+    renderHome()
+    screen.logTestingPlaygroundURL()
+  })
 })
