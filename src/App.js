@@ -11,8 +11,7 @@ import ReviewShow from "./pages/ReviewShow"
 import AboutUs from "./pages/AboutUs"
 import SignUp from "./pages/SignUp"
 import LogIn from "./pages/LogIn"
-
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useParams, useNavigate } from "react-router-dom"
 
 import "./App.css"
 
@@ -22,6 +21,10 @@ const App = () => {
   const [review, setReview] = useState([])
 
   useEffect(() => {
+    const loggedInUser = localStorage.getItem("user")
+    if (loggedInUser) {
+      setCurrentUser(JSON.parse(loggedInUser))
+    }
     readRecipe()
     readReview()
   }, [])
@@ -52,16 +55,22 @@ const App = () => {
       })
       .catch((error) => console.error("Review read errors: ", error))
   }
+  const createReview = (createReview, recipeId) => {
+    const reviewData = { ...createReview, recipe_id: parseInt(recipeId) }
 
-  const createReview = (createReview) => {
-    fetch(`${url}reviews/`, {
-      body: JSON.stringify(createReview),
+    fetch(`${url}reviews`, {
+      body: JSON.stringify(reviewData),
       headers: {
         "Content-Type": "application/json",
       },
       method: "POST",
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`)
+        }
+        return response.json()
+      })
       .then(() => readReview())
       .catch((error) => console.log("Review create errors:", error))
   }
@@ -81,34 +90,116 @@ const App = () => {
       .catch((error) => console.log("Update review errors: ", error))
   }
 
+  const deleteReview = (id) => {
+    fetch(`${url}reviews/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then(() => readReview())
+      .catch((errors) => console.log("delete errors:", errors))
+  }
+
+  const login = (userInfo) => {
+    fetch(`${url}login`, {
+      body: JSON.stringify(userInfo),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText)
+        }
+        localStorage.setItem("token", response.headers.get("Authorization"))
+        return response.json()
+      })
+      .then((payload) => {
+        localStorage.setItem("user", JSON.stringify(payload))
+        setCurrentUser(payload)
+      })
+      .catch((error) => console.log("login errors: ", error))
+  }
+
+  const signup = (userInfo) => {
+    fetch(`${url}signup`, {
+      body: JSON.stringify(userInfo),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText)
+        }
+        localStorage.setItem("token", response.headers.get("Authorization"))
+        return response.json()
+      })
+      .then((payload) => {
+        localStorage.setItem("user", JSON.stringify(payload))
+        setCurrentUser(payload)
+      })
+      .catch((error) => console.log("signup errors: ", error))
+  }
+
+  const logout = () => {
+    fetch(`${url}/logout`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+      method: "DELETE",
+    })
+      .then((payload) => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        setCurrentUser(null)
+      })
+      .catch((error) => console.log("log out errors: ", error))
+  }
+
   return (
     <div>
-      <Header />
+      <Header currentUser={currentUser} logout={logout} />
       <Routes>
         <Route path="/" element={<Home recipe={recipe} />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<LogIn />} />
+        <Route path="/login" element={<LogIn login={login} />} />
+        <Route path="/signup" element={<SignUp signup={signup} />} />
         <Route path="/index" element={<Index recipe={recipe} />} />
         <Route
           path="/reviews/:recipeId"
-          element={<ReviewShow reviews={review} />}
-        />
-        <Route path="/show/:id" element={<Show recipes={recipe} />} />
-        <Route
-          path="/new/:recipeId"
-          element={<New createReview={createReview} />}
-        />
-        <Route
-          path="/edit/:id"
-          element={
-            <Edit
-              updateReview={updateReview}
-              reviews={review}
-              currentUser={currentUser}
-            />
-          }
+          element={<ReviewShow reviews={review} deleteReview={deleteReview} />}
         />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/show/:id" element={<Show recipes={recipe} />} />
+        {
+          <>
+            currentUser && (
+            <Route
+              path="/new/:recipeId"
+              element={
+                <New createReview={createReview} currentUser={currentUser} />
+              }
+            />
+            <Route
+              path="/edit/:id"
+              element={
+                <Edit
+                  updateReview={updateReview}
+                  reviews={review}
+                  currentUser={currentUser}
+                />
+              }
+            />
+            )
+          </>
+        }
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

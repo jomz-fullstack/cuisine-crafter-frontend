@@ -292,6 +292,11 @@ body {
 /* -------- Edit Page --------- */
 
 /* -------- Log In Page --------- */
+
+.sign-in-conainer {
+  border: 2px black;
+}
+
 .sign-up {
   list-style-type: none;
   border: 2px solid transparent;

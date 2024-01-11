@@ -3,19 +3,8 @@ import { Nav, NavItem } from "reactstrap"
 import { NavLink, useNavigate } from "react-router-dom"
 import Logo from "../assets/CC2.png"
 import HoverLogo from "../assets/CC2Reverse.png"
-import {
-  Button,
-  Form,
-  FormGroup,
-  Input,
-  Label,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from "reactstrap"
 
-const Header = () => {
+const Header = ({currentUser, logout}) => {
   const [isHovered, setIsHovered] = useState(false)
 
   const navigate = useNavigate()
@@ -27,6 +16,26 @@ const Header = () => {
   const handleMouseLeave = () => {
     setIsHovered(false)
   }
+
+  const renderAuthButton = () => {
+    if (currentUser) {
+      return (
+        <NavItem>
+          <NavLink className="sign-in" onClick={logout}>
+            Log Off
+          </NavLink>
+        </NavItem>
+      );
+    } else {
+      return (
+        <NavItem>
+          <NavLink to="/login" className="sign-in">
+            Sign In
+          </NavLink>
+        </NavItem>
+      );
+    }
+  };
 
   return (
     <div className="header-container">
@@ -66,11 +75,7 @@ const Header = () => {
               {"|"}About Us{"|"}
             </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink to="/login" className="sign-in">
-              Sign In
-            </NavLink>
-          </NavItem>
+          {renderAuthButton()}
         </Nav>
       </div>
     </div>
