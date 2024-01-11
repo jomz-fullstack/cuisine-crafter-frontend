@@ -12,6 +12,7 @@ const Signup = ({ signup }) => {
     const userInfo = {
       user: { email: data.email, password: data.password },
     };
+    console.log("user info: ", userInfo)
     signup(userInfo);
     navigate("/");
     e.target.reset();

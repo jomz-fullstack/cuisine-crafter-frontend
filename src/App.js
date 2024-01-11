@@ -171,14 +171,14 @@ const App = () => {
       <Header currentUser={currentUser} logout={logout} />
       <Routes>
         <Route path="/" element={<Home recipe={recipe} />} />
+        <Route path="/login" element={<LogIn login={login} />} />
+        <Route path="/signup" element={<SignUp signup={signup} />} />
         <Route path="/index" element={<Index recipe={recipe} />} />
         <Route
           path="/reviews/:recipeId"
           element={<ReviewShow reviews={review} deleteReview={deleteReview} />}
         />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/login" element={<LogIn login={login} />} />
-        <Route path="/signup" element={<SignUp signup={signup} />} />
         <Route path="/show/:id" element={<Show recipes={recipe} />} />
         {
           <>
