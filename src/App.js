@@ -23,7 +23,6 @@ const App = () => {
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
     if (loggedInUser) {
-      // Parse the JSON string to an object
       setCurrentUser(JSON.parse(loggedInUser))
     }
     readRecipe()
@@ -57,7 +56,6 @@ const App = () => {
       .catch((error) => console.error("Review read errors: ", error))
   }
   const createReview = (createReview, recipeId) => {
-    // Ensure recipe_id is set before sending the request
     const reviewData = { ...createReview, recipe_id: parseInt(recipeId) }
 
     fetch(`${url}reviews`, {

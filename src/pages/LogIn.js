@@ -18,7 +18,7 @@ const Login = ({ login }) => {
   }
   
   return (
-    <div className="auth-body">
+    <div className="sign-in-container">
       <h2 className="header">Login</h2>
       <form className="form-div" ref={formRef} onSubmit={handleSubmit}>
         Email:{" "}

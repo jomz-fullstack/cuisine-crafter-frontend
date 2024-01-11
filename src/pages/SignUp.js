@@ -12,7 +12,7 @@ const Signup = ({ signup }) => {
     const userInfo = {
       user: { email: data.email, password: data.password },
     };
-    console.log("user info: ", userInfo)
+    console.log("user info: ", userInfo);
     signup(userInfo);
     navigate("/");
     e.target.reset();
@@ -23,7 +23,8 @@ const Signup = ({ signup }) => {
       <form ref={formRef} onSubmit={handleSubmit}>
         Email: <input type="email" name="email" placeholder="email" />
         <br />
-        Password: <input type="password" name="password" placeholder="password" />
+        Password:{" "}
+        <input type="password" name="password" placeholder="password" />
         <br />
         Confirm Password:{" "}
         <input

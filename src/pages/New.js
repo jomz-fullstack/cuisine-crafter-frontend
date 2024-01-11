@@ -11,7 +11,6 @@ const New = ({ createReview, currentUser }) => {
     body: "",
     stars: 0,
     user_id: currentUser ? currentUser.id : null,
-    // recipe_id: parseInt(recipeId),
   })
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const New = ({ createReview, currentUser }) => {
   }
 
   const handleSubmit = () => {
-    createReview(newReview, recipeId) // Pass recipeId to createReview
+    createReview(newReview, recipeId) 
     navigate(`/reviews/${recipeId}`)
   }
 
