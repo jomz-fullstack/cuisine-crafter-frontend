@@ -11,6 +11,7 @@ import ReviewShow from "./pages/ReviewShow"
 import AboutUs from "./pages/AboutUs"
 import SignUp from "./pages/SignUp"
 import LogIn from "./pages/LogIn"
+import Filter from "./pages/Filter"
 import { Routes, Route, useParams, useNavigate } from "react-router-dom"
 
 import "./App.css"
@@ -19,6 +20,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [recipe, setRecipe] = useState([])
   const [review, setReview] = useState([])
+
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
@@ -200,6 +202,7 @@ const App = () => {
             )
           </>
         }
+        <Route path="/filter" element={<Filter />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
