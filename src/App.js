@@ -11,7 +11,7 @@ import ReviewShow from "./pages/ReviewShow"
 import AboutUs from "./pages/AboutUs"
 import SignUp from "./pages/SignUp"
 import LogIn from "./pages/LogIn"
-import Filter from "./pages/Filter"
+// import Filter from "./pages/Filter"
 import { Routes, Route, useParams, useNavigate } from "react-router-dom"
 
 import "./App.css"
@@ -20,6 +20,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [recipe, setRecipe] = useState([])
   const [review, setReview] = useState([])
+   const apiKey = process.env.REACT_APP_API_KEY
 
 
   useEffect(() => {
@@ -43,8 +44,8 @@ const App = () => {
       .catch((error) => console.error("Recipe read errors: ", error))
   }
 
-  const readReview = (recipeId) => {
-    fetch(`${url}reviews/`)
+  const readReview = () => {
+    fetch(`${url}reviews`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`)
@@ -57,8 +58,8 @@ const App = () => {
       })
       .catch((error) => console.error("Review read errors: ", error))
   }
-  const createReview = (createReview, recipeId) => {
-    const reviewData = { ...createReview, recipe_id: parseInt(recipeId) }
+  const createReview = (createReview) => {
+    const reviewData = { ...createReview, }
 
     fetch(`${url}reviews`, {
       body: JSON.stringify(reviewData),
@@ -166,6 +167,7 @@ const App = () => {
       .catch((error) => console.log("log out errors: ", error))
   }
 
+
   return (
     <div>
       <Header currentUser={currentUser} logout={logout} />
@@ -175,7 +177,7 @@ const App = () => {
         <Route path="/signup" element={<SignUp signup={signup} />} />
         <Route path="/index" element={<Index recipe={recipe} />} />
         <Route
-          path="/reviews/:recipeId"
+          path="/reviews"
           element={<ReviewShow reviews={review} deleteReview={deleteReview} />}
         />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -184,7 +186,7 @@ const App = () => {
           <>
             currentUser && (
             <Route
-              path="/new/:recipeId"
+              path="/new/"
               element={
                 <New createReview={createReview} currentUser={currentUser} />
               }
@@ -202,7 +204,7 @@ const App = () => {
             )
           </>
         }
-        <Route path="/filter" element={<Filter />} />
+        {/* <Route path="/filter" element={<Filter />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

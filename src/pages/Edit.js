@@ -24,7 +24,7 @@ const Edit = ({ reviews, updateReview, currentUser }) => {
   const handleSubmit = () => {
     if (selectedReview) {
       updateReview(editReview)
-      navigate("/index")
+      navigate("/reviews")
     } else {
       console.error("Selected review not found")
     }

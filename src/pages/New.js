@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import ReactStarRating from "react-star-ratings-component"
 
 const New = ({ createReview, currentUser }) => {
-  const { recipeId } = useParams()
+  const {} = useParams()
   const navigate = useNavigate()
   const [newReview, setNewReview] = useState({
     header: "",
@@ -20,7 +20,7 @@ const New = ({ createReview, currentUser }) => {
         user_id: currentUser.id,
       }))
     }
-  }, [currentUser, recipeId])
+  }, [currentUser])
 
   const handleChange = (e) => {
     setNewReview({ ...newReview, [e.target.name]: e.target.value })
@@ -31,8 +31,8 @@ const New = ({ createReview, currentUser }) => {
   }
 
   const handleSubmit = () => {
-    createReview(newReview, recipeId) 
-    navigate(`/reviews/${recipeId}`)
+    createReview(newReview) 
+    navigate("/reviews")
   }
 
   return (
