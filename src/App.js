@@ -30,7 +30,7 @@ const App = () => {
     readReview()
   }, [])
 
-  const url = "http://localhost:3000/"
+  const url = "https://cuisine-crafter-be.onrender.com/"
 
   const readRecipe = () => {
     fetch(`${url}recipes`)
