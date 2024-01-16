@@ -43,7 +43,7 @@ Clone the project
 CD to the project directory
 
 ```bash
-  cd my-project
+  cd cuisine-crafter-frontend
 ```
 
 Install dependencies
