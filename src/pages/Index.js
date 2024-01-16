@@ -1,34 +1,110 @@
-import React from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardLink,
-} from "reactstrap";
+import React, { useState, useEffect } from "react"
+import { Input } from "reactstrap"
 
-const Index = ({ recipe }) => {
+
+const Index = () => {
+  const [data, setData] = useState([])
+  const [selectedRecipe, setSelectedRecipe] = useState(null)
+  const [input, setInput] = useState("")
+  const apiKey = process.env.REACT_APP_API_KEY
+
+
+  const fetchRecipeDetails = (recipeId) => {
+    fetch(
+      `https://api.spoonacular.com/recipes/${recipeId}/analyzedInstructions?stepBreakdown=true&apiKey=${apiKey}`
+    )
+      .then((response) => response.json())
+      .then(async (steps) => {
+        const nutritionResponse = await fetch(
+          `https://api.spoonacular.com/recipes/${recipeId}/nutritionWidget.json?apiKey=${apiKey}`
+        )
+        const nutritionData = await nutritionResponse.json()
+
+        const selectedRecipeDetails = {
+          instructions: steps.flatMap((instruction) => instruction.steps),
+          nutrition: nutritionData,
+        }
+        setSelectedRecipe(selectedRecipeDetails)
+      })
+      .catch((error) => console.log("errors: ", error))
+  }
+
+  const searchRecipes = () => {
+    fetch(
+      `https://api.spoonacular.com/recipes/complexSearch?query=${input}&number=6&limitLicense=true&apiKey=${apiKey}`
+    )
+      .then((response) => response.json())
+      .then(async (payload) => {
+        console.log(payload)
+        const searchedRecipes = payload.results.map(async (recipe) => {
+          const nutritionResponse = await fetch(
+            `https://api.spoonacular.com/recipes/${recipe.id}/nutritionWidget.json?apiKey=${apiKey}`
+          )
+          const nutritionData = await nutritionResponse.json()
+
+          return {
+            id: recipe.id,
+            title: recipe.title,
+            image: recipe.image,
+            nutrition: nutritionData,
+          }
+        })
+
+        Promise.all(searchedRecipes)
+          .then((recipesWithNutrition) => setData([...recipesWithNutrition]))
+          .catch((error) => console.log("errors: ", error))
+      })
+      .catch((error) => console.log("errors: ", error))
+  }
+
   return (
-    <div className="card-container">
-      {recipe?.map((recipeItem) => (
-        <div key={recipeItem.id}>
-          <Card className="card">
-            <CardBody>
-              <CardTitle tag="h5" className="card-title">{recipeItem.name}</CardTitle>
-            </CardBody>
-            <img
-              alt="Card cap"
-              src={recipeItem.image}
-              width="100%"
-            />
-            <CardBody className="card-link">
-              <CardLink href={`/show/${recipeItem.id}`} className="index-link" style={{position:"absolute", left:"30px", bottom: "20px"}}>Recipe</CardLink>{" "}
-              <CardLink href={`/reviews/${recipeItem.id}`} className="index-link" style={{position:"absolute", right:"30px", bottom: "20px"}}>Reviews</CardLink>
-            </CardBody>
-          </Card>
+    <>
+      {selectedRecipe ? (
+        <div>
+          <h2>{selectedRecipe.title}</h2>
+          <h3>Instructions:</h3>
+          <ol>
+            {selectedRecipe.instructions.map((step, index) => (
+              <li key={index}>{step.step}</li>
+            ))}
+          </ol>
+          <h3>Nutrition:</h3>
+          <ul>
+            {selectedRecipe.nutrition &&
+              selectedRecipe.nutrition.nutrients
+                .filter(
+                  (nutrient) =>
+                    nutrient.name === "Protein" || nutrient.name === "Calories"
+                )
+                .map((nutrient) => (
+                  <li key={nutrient.name}>
+                    {nutrient.name}: {nutrient.amount} {nutrient.unit}
+                  </li>
+                ))}
+          </ul>
+          <button onClick={() => setSelectedRecipe(null)}>
+            Back to Recipes
+          </button>
         </div>
-      ))}
-    </div>
-  );
-};
+      ) : (
+        <>
+          <Input
+            type="text"
+            name="header"
+            onChange={(e) => setInput(e.target.value)}
+            value={input}
+          />
+          <button onClick={searchRecipes}>Search</button>
+          {data.map((recipe) => (
+            <div key={recipe.id} onClick={() => fetchRecipeDetails(recipe.id)}>
+              <h2>{recipe.title}</h2>
+              {recipe.image && <img src={recipe.image} alt={recipe.title} />}
+            </div>
+          ))}
+        </>
+      )}
+    </>
+  )
+}
 
-export default Index;
+export default Index

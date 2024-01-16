@@ -1,11 +1,11 @@
 import React from "react"
 import { useParams, Link } from "react-router-dom"
 
-const ReviewShow = ({ reviews, deleteReview }) => {
-  const { recipeId } = useParams()
-  const recipeReviews = reviews.filter(
-    (review) => review.recipe_id === +recipeId
-  )
+const ReviewShow = ({ reviews, deleteReview, newReview }) => {
+  // const { recipeId } = useParams()
+  // const recipeReviews = reviews.filter(
+  //   (review) => review.recipe_id === +recipeId
+  // )
 
   const renderStars = (rating) => {
     const starElements = []
@@ -29,10 +29,10 @@ const ReviewShow = ({ reviews, deleteReview }) => {
   return (
     <div>
       <h1>All Reviews</h1>
-      <Link to={`/new/${recipeId}`}>
+      <Link to={`/new/`}>
         <button>Create New Review</button>
       </Link>
-      {recipeReviews.map((reviewItem) => (
+      {reviews.map((reviewItem) => (
         <div key={reviewItem.id}>
           <h2>
             {reviewItem.header}{" "}
@@ -44,7 +44,7 @@ const ReviewShow = ({ reviews, deleteReview }) => {
           <p>{reviewItem.body}</p>
           {renderStars(reviewItem.stars)}
           <br />
-          <Link to={"/reviews/:recipeId"}>
+          <Link to={"/reviews"}>
             <button onClick={() => deleteReview(reviewItem.id)}>
               Delete Review
             </button>
