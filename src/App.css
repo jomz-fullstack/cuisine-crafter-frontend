@@ -111,15 +111,6 @@ body {
 
 /* -------- Home --------- */
 
-.checkbox-container {
-  border: 2px solid transparent;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  text-align: center;
-}
-
 .home-header {
   font-size: 2rem;
   font-weight: bold;
@@ -127,17 +118,8 @@ body {
   margin-top: 0;
 }
 
-.checkboxes {
-  margin-bottom: 10px;
-  margin-right: 5px;
-  display: inline-block;
-  border: 2px solid transparent;
-
-}
-
-.checkboxes input[type="checkbox"] {
-  transform: scale(2); 
-  margin-right: 15px;
+.middle-container {
+  border: 2px solid black;
 }
 
 /* -------- Suggested Recipes --------- */
@@ -195,6 +177,42 @@ body {
 
 /* -------- Review Show Page --------- */
 
+.review-container {
+  height: 100%;
+  width: auto;
+  border: 2px solid blue;
+  margin-bottom: 20px;
+}
+
+.create-review-button {
+  border: 2px solid black;
+  width: 230px;
+  background-color: transparent;
+  border-right: none;
+  border-left: none;
+  transition: 0.5s ease;
+}
+
+.create-review-button:hover {
+  letter-spacing: 5px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); 
+  background-color: rgb(223, 222, 222);
+}
+
+.update-button {
+  border: 2px solid black;
+  width: 160px;
+  background-color: transparent;
+  border-right: none;
+  border-left: none;
+  transition: 0.5s ease;
+}
+
+.update-button:hover {
+  letter-spacing: 5px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); 
+  background-color: rgb(223, 222, 222);
+}
 
 
 /* -------- Recipe Show Page --------- */

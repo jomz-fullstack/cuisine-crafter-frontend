@@ -186,7 +186,7 @@ const App = () => {
           <>
             currentUser && (
             <Route
-              path="/new/"
+              path="/new"
               element={
                 <New createReview={createReview} currentUser={currentUser} />
               }
