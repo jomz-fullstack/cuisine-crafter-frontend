@@ -31,6 +31,11 @@ const New = ({ createReview, currentUser }) => {
   }
 
   const handleSubmit = () => {
+    if (!newReview.header || !newReview.body || newReview.stars === 0) {
+      // If any field is missing, prevent form submission
+      alert("Please fill in all required fields.");
+      return;
+    }
     createReview(newReview) 
     navigate("/reviews")
   }
@@ -48,6 +53,7 @@ const New = ({ createReview, currentUser }) => {
             onChange={handleChange}
             value={newReview.header}
             className="input-box"
+            required
           />
         </FormGroup>
         <FormGroup>
@@ -58,6 +64,7 @@ const New = ({ createReview, currentUser }) => {
             onChange={handleChange}
             value={newReview.body}
             className="input-box"
+            required
           />
         </FormGroup>
         <FormGroup>
@@ -72,6 +79,7 @@ const New = ({ createReview, currentUser }) => {
             spaceBetweenStar="10px"
             disableOnSelect={false}
             onSelectStar={handleRatingChange}
+            required
           /></div>
         </FormGroup>
       </Form>
