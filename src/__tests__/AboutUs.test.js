@@ -11,6 +11,13 @@ describe("<AboutUs />", () => {
     )
   it("renders without crashing", () => {
     renderAboutUs()
-    // screen.logTestingPlaygroundURL()
+    screen.logTestingPlaygroundURL()
   })
+  it("renders Product Manager", () => {
+    renderAboutUs()
+    expect(screen.getByRole('heading', {
+      name: /product manager/i
+    }))
+  })
+  it()
 })

@@ -1,6 +1,6 @@
-import { BrowserRouter } from "react-router-dom"
-import { render, screen, waitFor } from "@testing-library/react"
-import Index from "../pages/Index"
+import { BrowserRouter } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
+import Index from "../pages/Index";
 
 describe("<Index />", () => {
   const renderIndex = (recipe) =>
@@ -8,20 +8,20 @@ describe("<Index />", () => {
       <BrowserRouter>
         <Index recipe={recipe} />
       </BrowserRouter>
-    )
+    );
 
   it("renders without crashing", () => {
-    const mockRecipe = [
-      {
-        id: 1,
-        name: "Test Recipe 1",
-        image: "test-image-1.jpg",
-      },
-    ]
-
-    renderIndex(mockRecipe)
-    const cardContainer = screen.getByTestId("card-container")
-
-    expect(cardContainer).toBeInTheDocument()
+    renderIndex();
+    // screen.logTestingPlaygroundURL()
+  });
+  it("renders a textbox", () => {
+    renderIndex()
+    expect(screen.getByRole('textbox'))
   })
-})
+  it("renders a search button", () => {
+    renderIndex()
+    expect(screen.getByRole('button', {
+      name: /search/i
+    }))
+  })
+});

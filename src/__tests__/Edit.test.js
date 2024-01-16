@@ -12,28 +12,34 @@ describe("<Edit />", () => {
 
   it("renders without crashing", () => {
     renderEdit()
+    // screen.logTestingPlaygroundURL()
   })
-
-  it("renders review edit header", () => {
+  it("renders Edit Review", () => {
     renderEdit()
-
-    const editPage = screen.getByRole("heading", {
-      name: /review page/i,
-    })
-    expect(editPage).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', {
+        name: /edit review/i
+      })
+    )
   })
-  it("renders an edit form", () => {
+  it("renders Review Header", () => {
     renderEdit()
-
-    const editHeader = screen.getByText(/review header/i)
-    expect(editHeader).toBeInTheDocument()
-    const editBody = screen.getByText(/review body/i)
-    expect(editBody).toBeInTheDocument()
-    const editStars = screen.getByText(/rating/i)
-    expect(editStars).toBeInTheDocument()
-    const submitButton = screen.getByRole("button", {
-      name: /submit review/i,
-    })
-    expect(submitButton).toBeInTheDocument()
+    expect(screen.getByText(/review header/i))
   })
-})
+  it("renders Review Body", () => {
+    renderEdit()
+    expect(screen.getByText(/review body/i))
+  })
+  it("renders Rating", () => {
+    renderEdit()
+    expect(screen.getByText(/rating/i))
+  })
+  it("renders submit button", () => {
+    renderEdit()
+    expect(screen.getByRole('button', {
+      name: /submit review/i
+    }))
+  })
+}) 
+
+
