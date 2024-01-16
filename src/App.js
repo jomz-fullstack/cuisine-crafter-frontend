@@ -9,9 +9,7 @@ import NotFound from "./pages/NotFound"
 import Show from "./pages/Show"
 import ReviewShow from "./pages/ReviewShow"
 import AboutUs from "./pages/AboutUs"
-import SignUp from "./pages/SignUp"
 import LogIn from "./pages/LogIn"
-// import Filter from "./pages/Filter"
 import { Routes, Route, useParams, useNavigate } from "react-router-dom"
 
 import "./App.css"
@@ -173,8 +171,7 @@ const App = () => {
       <Header currentUser={currentUser} logout={logout} />
       <Routes>
         <Route path="/" element={<Home recipe={recipe} />} />
-        <Route path="/login" element={<LogIn login={login} />} />
-        <Route path="/signup" element={<SignUp signup={signup} />} />
+        <Route path="/login" element={<LogIn login={login} signup={signup} />} />
         <Route path="/index" element={<Index recipe={recipe} />} />
         <Route
           path="/reviews"
@@ -186,7 +183,7 @@ const App = () => {
           <>
             currentUser && (
             <Route
-              path="/new/"
+              path="/new"
               element={
                 <New createReview={createReview} currentUser={currentUser} />
               }

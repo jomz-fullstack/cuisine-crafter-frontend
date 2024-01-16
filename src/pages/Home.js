@@ -9,6 +9,9 @@ const Home = ({recipe}) => {
   return (
     <div className="checkbox-container">
       <img src={HomeImage} style={{ width:"100%", height:"auto", borderBottom:"5px solid black"}}/>
+      <div className="middle-container">
+        <h1>Hello There.</h1>
+      </div>
       <SuggestedRecipes recipes={recipe} />
     </div>
   );

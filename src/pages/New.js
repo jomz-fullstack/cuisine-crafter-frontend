@@ -7,6 +7,7 @@ const New = ({ createReview, currentUser }) => {
   const {} = useParams()
   const navigate = useNavigate()
   const [newReview, setNewReview] = useState({
+    
     header: "",
     body: "",
     stars: 0,
@@ -31,34 +32,45 @@ const New = ({ createReview, currentUser }) => {
   }
 
   const handleSubmit = () => {
+    if (!newReview.header || !newReview.body || newReview.stars === 0) {
+      // If any field is missing, prevent form submission
+      alert("Please fill in all required fields.");
+      return;
+    }
     createReview(newReview) 
     navigate("/reviews")
   }
 
   return (
-    <div>
-      <h1>Review Page</h1>
+    <div className="edit-container">
+      <h1>New Review</h1>
+      <div className="input-container">
       <Form>
         <FormGroup>
-          <Label for="header">Review Header</Label>
+        <Label for="header" style={{ fontSize: "25px" }}>Review Header</Label><br/>
           <Input
             type="text"
             name="header"
             onChange={handleChange}
             value={newReview.header}
+            className="input-box"
+            required
           />
         </FormGroup>
         <FormGroup>
-          <Label for="body">Review Body</Label>
+        <Label for="body" style={{ fontSize: "25px" }}>Review Body</Label><br/>
           <Input
             type="text"
             name="body"
             onChange={handleChange}
             value={newReview.body}
+            className="input-box"
+            required
           />
         </FormGroup>
         <FormGroup>
-          <Label for="stars">Rating</Label>
+        <Label for="stars" style={{ fontSize: "25px" }}><br/>Rating</Label>
+        <div className="star-rating">
           <ReactStarRating
             numberOfStar={5}
             rating={newReview.stars}
@@ -68,12 +80,14 @@ const New = ({ createReview, currentUser }) => {
             spaceBetweenStar="10px"
             disableOnSelect={false}
             onSelectStar={handleRatingChange}
-          />
+            required
+          /></div>
         </FormGroup>
       </Form>
-      <Button onClick={handleSubmit} name="submit">
+      <Button onClick={handleSubmit} name="submit" className="edit-submit">
         Submit Review
       </Button>
+      </div>
     </div>
   )
 }

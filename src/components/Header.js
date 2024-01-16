@@ -71,6 +71,11 @@ const Header = ({currentUser, logout}) => {
             </NavLink>
           </NavItem>
           <NavItem>
+            <NavLink to="/reviews" className="header-link">
+              {"|"}Reviews{"|"}
+            </NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink to="/aboutus" className="header-link">
               {"|"}About Us{"|"}
             </NavLink>

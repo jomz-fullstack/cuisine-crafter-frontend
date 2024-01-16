@@ -12,13 +12,12 @@ describe("<New />", () => {
   }
   it("renders without crashing", () => {
     renderNew()
- 
   })
   it("renders review title", () => {
     renderNew()
 
     const reviewTitle = screen.getByRole("heading", {
-      name: /review page/i,
+      name: /new review/i,
     })
     expect(reviewTitle).toBeInTheDocument()
   })

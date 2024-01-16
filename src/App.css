@@ -111,15 +111,6 @@ body {
 
 /* -------- Home --------- */
 
-.checkbox-container {
-  border: 2px solid transparent;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  text-align: center;
-}
-
 .home-header {
   font-size: 2rem;
   font-weight: bold;
@@ -127,17 +118,9 @@ body {
   margin-top: 0;
 }
 
-.checkboxes {
-  margin-bottom: 10px;
-  margin-right: 5px;
-  display: inline-block;
+.middle-container {
   border: 2px solid transparent;
-
-}
-
-.checkboxes input[type="checkbox"] {
-  transform: scale(2); 
-  margin-right: 15px;
+  margin-top: 20px;
 }
 
 /* -------- Suggested Recipes --------- */
@@ -195,6 +178,42 @@ body {
 
 /* -------- Review Show Page --------- */
 
+.review-container {
+  height: 100%;
+  width: auto;
+  border: 2px solid transparent;
+  margin-bottom: 20px;
+}
+
+.create-review-button {
+  border: 2px solid black;
+  width: 230px;
+  background-color: transparent;
+  border-right: none;
+  border-left: none;
+  transition: 0.5s ease;
+}
+
+.create-review-button:hover {
+  letter-spacing: 5px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); 
+  background-color: rgb(223, 222, 222);
+}
+
+.update-button {
+  border: 2px solid black;
+  width: 160px;
+  background-color: transparent;
+  border-right: none;
+  border-left: none;
+  transition: 0.5s ease;
+}
+
+.update-button:hover {
+  letter-spacing: 5px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); 
+  background-color: rgb(223, 222, 222);
+}
 
 
 /* -------- Recipe Show Page --------- */
@@ -209,6 +228,42 @@ body {
 
 
 /* -------- Index (Recipe) Page --------- */
+
+.search-input {
+  height: 30px;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.recipe-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; 
+  margin-top: 20px; 
+  height: 300px;
+}
+
+.recipe-card {
+  width: 300px; 
+  margin-bottom: 20px; 
+}
+
+.recipe-title {
+  border: 2px solid transparent;
+  margin-top: -20px;
+}
+
+.index-image {
+  border: 2px solid transparent;
+  height: auto;
+  width: 99%;
+  margin-top: 80px;
+}
+
+
+
+
+
 
 .card-container {
   flex-wrap: wrap;
@@ -289,25 +344,78 @@ body {
 }
 
 
-/* -------- Edit Page --------- */
+/* -------- New/Edit Page --------- */
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid transparent;
+  width: 100%;
+  height: 80vh;
+  box-sizing: content-box;
+}
+
+.input-container {
+  justify-content: center;
+  border: 2px solid transparent;
+  width: 500px;
+  /* margin-top: 10%; */
+}
+
+.input-box {
+  width: 300px;
+  height: 25px;
+  font-size: 20px;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-submit {
+  border: 2px solid black;
+  width: 160px;
+  height: 30px;
+  background-color: transparent;
+  border-right: none;
+  border-left: none;
+  transition: 0.5s ease;
+}
+
+.edit-submit:hover {
+  letter-spacing: 5px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); 
+  background-color: rgb(223, 222, 222);
+}
+
 
 /* -------- Log In Page --------- */
 
-.sign-in-conainer {
-  border: 2px black;
-}
-
-.sign-up {
-  list-style-type: none;
-  border: 2px solid transparent;
+.login-page-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  height: 100vh; 
-  text-decoration: none;
+  border: 2px solid transparent;
+  height: 87vh;
+
 }
 
+.sign-in-container,
+.sign-up-container {
+  align-items: center;
+  border: 2px solid transparent;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
 
+.sign-in-container {
+  border-right: 3px solid black;
+}
 
 .input-container {
   font-size: 25px;
@@ -346,14 +454,56 @@ body {
   letter-spacing: 4px;
 }
 
+.eye-icon {
+  height: 22px;
+  width: 20px;
+}
 
 
-/* -------- Sign Up Page --------- */
 
+/* -------- About Us --------- */
 
+.aboutus-container {
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
 
+.single-box {
+  border: 2px solid transparent;
+  width: 350px;
+  height: 650px;
+  margin-top: -50px;
+  margin-right: 20px;
+}
 
+.single-box h2 {
+  border-bottom: 2px solid black;
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.single-box h2 img {
+  height: 25px;
+  border: none;
+}
+
+.single-box h3::first-letter {
+  font-family: 'Rubik Doodle Shadow', system-ui;
+  font-size: 30px;
+}
+
+.single-box img {
+  height: 250px;
+  width: auto;
+  border: 3px solid black;
+}
+
+.external-links img {
+  border: none;
+  height: 50px;
+}
 /* -------- Not Found Page --------- */
-
-
-
