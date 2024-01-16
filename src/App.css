@@ -239,12 +239,24 @@ body {
   flex-wrap: wrap;
   justify-content: space-around; 
   margin-top: 20px; 
-  height: 350px;
+  height: 300px;
 }
 
 .recipe-card {
-  width: 300px; /* Adjust the width as needed */
-  margin-bottom: 20px; /* Add margin for spacing */
+  width: 300px; 
+  margin-bottom: 20px; 
+}
+
+.recipe-title {
+  border: 2px solid transparent;
+  margin-top: -20px;
+}
+
+.index-image {
+  border: 2px solid transparent;
+  height: auto;
+  width: 99%;
+  margin-top: 80px;
 }
 
 

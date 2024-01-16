@@ -61,6 +61,7 @@ const Index = () => {
       {selectedRecipe ? (
         <div>
           <h2>{selectedRecipe.title}</h2>
+          <img src={selectedRecipe.image} />
           <h3>Instructions:</h3>
           <ol>
             {selectedRecipe.instructions.map((step, index) => (
@@ -81,7 +82,7 @@ const Index = () => {
                   </li>
                 ))}
           </ul>
-          <button onClick={() => setSelectedRecipe(null)}>
+          <button onClick={() => setSelectedRecipe(null)} className="edit-submit" style={{width:"220px"}}>
             Back to Recipes
           </button>
         </div>
@@ -100,31 +101,30 @@ const Index = () => {
             Search
           </button>
           <div className="recipe-cards">
-            {data.map((recipe) => (
-              <Card
-                key={recipe.id}
-                className="recipe-card"
-                onClick={() => fetchRecipeDetails(recipe.id)}
-              >
-                <CardBody style={{ textAlign: "center" }}>
-                  <CardTitle
-                    tag="h5"
-                    style={{
-                      fontSize: "30px",
-                    }}
-                  >
-                    <h2>{recipe.title}</h2>
-                  </CardTitle>
-                  {recipe.image && (
-                    <img
-                      src={recipe.image}
-                      alt={recipe.title}
-                      style={{ width: "100%", height: "auto" }}
-                    />
-                  )}
-                </CardBody>
-              </Card>
-            ))}
+          {data.map((recipe) => (
+  <Card key={recipe.id} className="recipe-card" onClick={() => fetchRecipeDetails(recipe.id)}>
+    <CardBody style={{ textAlign: 'center', position: 'relative' }}>
+      <CardTitle
+        tag="h5"
+        style={{
+          fontSize: "30px",
+        }}
+      >
+        <p className="recipe-title">{recipe.title}</p>
+      </CardTitle>
+      <div className="index-image">
+        {recipe.image && (
+          <img
+            src={recipe.image}
+            alt={recipe.title}
+          />
+        )}
+      </div>
+    </CardBody>
+  </Card>
+))}
+
+
           </div>
         </>
       )}
