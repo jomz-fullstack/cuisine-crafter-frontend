@@ -12,7 +12,6 @@ describe("<Header />", () => {
 
   it("renders without crashing", () => {
     renderHeader()
- 
   })
 
   it("renders the logo", () => {

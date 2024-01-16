@@ -12,7 +12,6 @@ describe("<New />", () => {
   }
   it("renders without crashing", () => {
     renderNew()
- 
   })
   it("renders review title", () => {
     renderNew()
