@@ -180,7 +180,7 @@ body {
 .review-container {
   height: 100%;
   width: auto;
-  border: 2px solid blue;
+  border: 2px solid transparent;
   margin-bottom: 20px;
 }
 
@@ -227,6 +227,30 @@ body {
 
 
 /* -------- Index (Recipe) Page --------- */
+
+.search-input {
+  height: 30px;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.recipe-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; 
+  margin-top: 20px; 
+  height: 350px;
+}
+
+.recipe-card {
+  width: 300px; /* Adjust the width as needed */
+  margin-bottom: 20px; /* Add margin for spacing */
+}
+
+
+
+
+
 
 .card-container {
   flex-wrap: wrap;
@@ -307,7 +331,52 @@ body {
 }
 
 
-/* -------- Edit Page --------- */
+/* -------- New/Edit Page --------- */
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid transparent;
+  width: 100%;
+  height: 80vh;
+  box-sizing: content-box;
+}
+
+.input-container {
+  justify-content: center;
+  border: 2px solid transparent;
+  width: 500px;
+  /* margin-top: 10%; */
+}
+
+.input-box {
+  width: 300px;
+  height: 25px;
+  font-size: 20px;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-submit {
+  border: 2px solid black;
+  width: 160px;
+  height: 30px;
+  background-color: transparent;
+  border-right: none;
+  border-left: none;
+  transition: 0.5s ease;
+}
+
+.edit-submit:hover {
+  letter-spacing: 5px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); 
+  background-color: rgb(223, 222, 222);
+}
+
 
 /* -------- Log In Page --------- */
 
@@ -366,11 +435,42 @@ body {
 
 
 
-/* -------- Sign Up Page --------- */
+/* -------- About Us --------- */
 
+.aboutus-container {
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
 
+.single-box {
+  border: 2px solid transparent;
+  width: 350px;
+  height: 650px;
+  margin-top: -50px;
+}
 
+/* .single-box h3 {
+  font-family: 'Beth Ellen', cursive;
+} */
 
+.single-box h3::first-letter {
+  font-family: 'Rubik Doodle Shadow', system-ui;
+  font-size: 30px;
+}
+
+.single-box img {
+  height: 250px;
+  width: auto;
+  border: 3px solid black;
+}
+
+.external-links img {
+  border: none;
+  height: 50px;
+}
 /* -------- Not Found Page --------- */
 
 
