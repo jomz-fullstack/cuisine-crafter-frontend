@@ -5,7 +5,12 @@ import M from "../assets/M.JPG";
 import Z from "../assets/Z.jpg";
 import LinkedInLogo from "../assets/LinkedIn.png";
 import GitHubLogo from "../assets/GitHub.png";
-import { Link } from "react-router-dom";
+import Avacado from "../assets/Avocado.png"
+import Banana from "../assets/Banana.png"
+import Bread from "../assets/Bread.png"
+import Egg from "../assets/Egg.png"
+import Eggplant from "../assets/Eggplant.png"
+import Steak from "../assets/Steak.png"
 
 const AboutUs = () => {
   return (
