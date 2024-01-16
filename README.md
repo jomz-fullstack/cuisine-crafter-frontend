@@ -2,7 +2,7 @@
 # Cuisine Crafters 
 
 Welcome to Cuisine Crafters, where culinary exploration meets the digital age! Unleash your inner chef and embark on a journey of delightful flavors with our user-friendly recipe app.
-Search through a vast collection of mouthwatering recipes, leveraging the Spoonacular API, curated to satisfy every craving. Whether you're a seasoned chef or a kitchen novice, Cuisine Crafters has recipes for every skill level and taste bud.
+Search through a vast collection of mouthwatering recipes, leveraging the [Spoonacular API](https://spoonacular.com), curated to satisfy every craving. Whether you're a seasoned chef or a kitchen novice, Cuisine Crafters has recipes for every skill level and taste bud.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
