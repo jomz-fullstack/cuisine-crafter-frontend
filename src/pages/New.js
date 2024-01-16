@@ -7,6 +7,7 @@ const New = ({ createReview, currentUser }) => {
   const {} = useParams()
   const navigate = useNavigate()
   const [newReview, setNewReview] = useState({
+    
     header: "",
     body: "",
     stars: 0,

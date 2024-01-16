@@ -4,7 +4,7 @@ import Home from "../pages/Home"
 
 describe("<Home />", () => {
   const renderHome = () =>
-    renderHome(
+    render(
       <BrowserRouter>
         <Home />
       </BrowserRouter>

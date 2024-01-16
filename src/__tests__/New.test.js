@@ -17,7 +17,7 @@ describe("<New />", () => {
     renderNew()
 
     const reviewTitle = screen.getByRole("heading", {
-      name: /review page/i,
+      name: /new review/i,
     })
     expect(reviewTitle).toBeInTheDocument()
   })

@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom"
-import { render } from "@testing-library/react"
+import { render, screen, waitFor } from "@testing-library/react"
 import Index from "../pages/Index"
 
 describe("<Index />", () => {
@@ -20,7 +20,7 @@ describe("<Index />", () => {
     ]
 
     renderIndex(mockRecipe)
-    const cardContainer = document.getElementsByClassName("card-container")[0]
+    const cardContainer = screen.getByTestId("card-container")
 
     expect(cardContainer).toBeInTheDocument()
   })
