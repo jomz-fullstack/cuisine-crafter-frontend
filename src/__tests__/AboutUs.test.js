@@ -19,5 +19,4 @@ describe("<AboutUs />", () => {
       name: /product manager/i
     }))
   })
-  it()
 })

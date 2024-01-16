@@ -11,6 +11,6 @@ describe("<SuggestedRecipes />", () => {
     )
   it("renders without crashing", () => {
     renderSuggestedRecipes()
-    // screen.logTestingPlaygroundURL()
+    screen.logTestingPlaygroundURL()
   })
 })
