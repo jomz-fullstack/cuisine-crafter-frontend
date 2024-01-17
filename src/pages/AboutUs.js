@@ -16,13 +16,8 @@ const AboutUs = () => {
           <h3>Joseph McMorris II</h3>
           <img src={J} />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            
+            Hello, I'm Joseph—a full-stack web developer with a military background and a decade of experience in civil engineering. Outside of coding, I enjoy Brazilian Jiu-Jitsu and volleyball. Let's create something exceptional!
           </p>
           <div className="external-links">
             <a href="https://github.com/JosephMcMorrisII">
@@ -55,13 +50,7 @@ const AboutUs = () => {
           <h3>Marinda Vang</h3>
           <img src={M} />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          Hi! I'm a full-stack web developer, prior US Marine with 9 years of data analysis experience. I specialize in user-centric frontend development and bring a unique blend of skills from my military background. Beyond tech, I'm a food enthusiast exploring diverse cuisines with two delightful dogs. Join me on this journey where technology meets creativity, and every meal is a celebration of flavors!
           </p>
           <div className="external-links">
             <a href="https://github.com/Mvangg">
@@ -77,13 +66,7 @@ const AboutUs = () => {
           <h3>Zenia Varela</h3>
           <img src={Z} />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          Hey there! I'm Zenia, a full-stack web developer transitioning from military intelligence to tech. I'm passionate about creating innovative and secure digital solutions. Let's connect and explore collaborations on exciting web development projects! 
           </p>
           <div className="external-links">
             <a href="https://github.com/zeniavarela">
