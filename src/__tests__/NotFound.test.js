@@ -11,5 +11,18 @@ describe("<NotFound />", () => {
     )
   it("renders without crashing", () => {
     renderNotFound()
+    screen.logTestingPlaygroundURL()
+  })
+  it("renders an image", () => {
+    renderNotFound()
+    expect(screen.getByRole('img')).toBeInTheDocument()
+  })
+  it("renders a header", () => {
+    renderNotFound()
+    expect(
+      screen.getByRole('heading', {
+        name: /oops! page not found\. not found image/i
+      })
+    )
   })
 })

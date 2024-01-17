@@ -11,7 +11,7 @@ describe("<Home />", () => {
     )
   it("renders without crashing", () => {
     renderHome()
-    // screen.logTestingPlaygroundURL()
+    screen.logTestingPlaygroundURL()
   })
 
   it("renders Suggested Recipes", () => {
@@ -22,4 +22,12 @@ describe("<Home />", () => {
       })
     )
   })
+  it("renders an image", () => {
+    renderHome()
+    expect(screen.getByRole('img')).toBeInTheDocument()
+  })
+  it("renders the SuggestedRecipes component", () => {
+    renderHome();
+    expect(screen.getByRole('heading', { name: /suggested recipes/i })).toBeInTheDocument();
+  });
 })
