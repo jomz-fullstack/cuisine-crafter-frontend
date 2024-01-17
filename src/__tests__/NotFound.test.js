@@ -1,3 +1,4 @@
+
 import { BrowserRouter } from "react-router-dom"
 import { render, screen } from "@testing-library/react"
 import NotFound from "../pages/NotFound"
@@ -8,8 +9,13 @@ describe("<NotFound />", () => {
       <BrowserRouter>
         <NotFound />
       </BrowserRouter>
-    )
+    );
+
   it("renders without crashing", () => {
-    renderNotFound()
-  })
-})
+    renderNotFound();
+    const headingElement = screen.getByText(/NotFound Page/i);
+    expect(headingElement).toBeInTheDocument();
+
+
+  });
+});
