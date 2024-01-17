@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 ## Credits
-Cuisine Crafter would not have been possible without the contributions and support of the following individuals
+Cuisine Crafter would not have been possible without the contributions and support of the following individuals:
 
 - [@JosephMcMorrisII](https://github.com/JosephMcMorrisII) Joseph McMorris II, Product Manager
 - [@0Tron](https://github.com/0Tron) Oscar Troncoso, Lead Tech
