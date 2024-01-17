@@ -10,6 +10,7 @@ import Show from "./pages/Show"
 import ReviewShow from "./pages/ReviewShow"
 import AboutUs from "./pages/AboutUs"
 import LogIn from "./pages/LogIn"
+import SignUp from "./pages/SignUp"
 import { Routes, Route, useParams, useNavigate } from "react-router-dom"
 
 import "./App.css"
@@ -30,7 +31,7 @@ const App = () => {
     readReview()
   }, [])
 
-  const url = "https://cuisine-crafter-be.onrender.com/"
+  const url = "http://localhost:3000/"
 
   const readRecipe = () => {
     fetch(`${url}recipes`)
@@ -171,7 +172,8 @@ const App = () => {
       <Header currentUser={currentUser} logout={logout} />
       <Routes>
         <Route path="/" element={<Home recipe={recipe} />} />
-        <Route path="/login" element={<LogIn login={login} signup={signup} />} />
+        <Route path="/login" element={<LogIn login={login} signup={signup}/>} />
+        <Route path="/signup" element={<SignUp signup={signup}/>}/>
         <Route path="/index" element={<Index recipe={recipe} />} />
         <Route
           path="/reviews"
@@ -201,7 +203,6 @@ const App = () => {
             )
           </>
         }
-        {/* <Route path="/filter" element={<Filter />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
