@@ -1,7 +1,19 @@
+import React from "react"
 import { render, screen } from "@testing-library/react"
-import mockRecipes from "../mockRecipes"
 import Show from "../pages/Show"
 import { MemoryRouter, Route, Routes } from "react-router-dom"
+
+const mockRecipes = [
+  {
+    id: 1,
+    name: "Test Recipe",
+    image: "test-image.jpg",
+    protein: "Protein",
+    ingredients: "Ingredient 1, Ingredient 2",
+    instructions: "Test instructions",
+    nutrition: "Test nutrition",
+  },
+]
 
 const renderRecipeShow = () => {
   render(
