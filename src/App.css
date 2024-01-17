@@ -62,10 +62,6 @@ body {
   transform: translateY(-50%);
 }
 
-/* .main-head:hover {
-  color: pink;
-} */
-
 .navlink-container a {
   text-decoration: none;
   margin-right: 20px;
@@ -109,6 +105,36 @@ body {
   color: pink;
 }
 
+@media only screen and (max-width: 500px){
+  .logo {
+    height: 50px;
+  }
+  .header-container {
+    height: 110px;
+  }
+  .main-head {
+    font-size: 15px;
+    left: 50px;
+  }
+  .header-link {
+    font-size: 15px;
+  }
+  .navlink-container {
+    display: flex;
+    flex-wrap: wrap; 
+    border: 2px solid transparent;
+    width: 190px;
+    justify-content: flex-start;
+    margin-right: -30px;
+
+  }
+  .sign-in {
+    font-size: 15px;
+  }
+  .navlink-container a:hover {
+    letter-spacing: normal;
+  }
+}
 /* -------- Home --------- */
 
 .home-header {
@@ -122,6 +148,11 @@ body {
   border: 2px solid transparent;
   margin-top: 20px;
 }
+
+@media only screen and (max-width: 500px){
+
+}
+
 
 /* -------- Suggested Recipes --------- */
 
@@ -158,6 +189,36 @@ body {
   border-radius: 50%;
 }
 
+@media only screen and (max-width: 500px){
+    .suggested-recipes-container {
+      border: 2px solid transparent;
+      align-items: center;
+      height: 350px;
+      width: 220px;
+      margin: 0 auto;
+      flex-direction: column;
+    }
+  .circular-image {
+    width: 70px;
+    height: 70px;
+    border: 5px solid black;
+    margin-bottom: 5px;
+  }
+  .circle-container {
+    border: 2px solid transparent;
+    margin-top: -90px;
+  }
+  .suggested-recipe:first-child .circle-container {
+    margin-top: -40px; 
+  }
+  .suggested-recipe:last-child .circle-container {
+    margin-bottom: -5px; 
+  }
+  .circular-image-title {
+    margin-top: -9px;
+  }
+}
+
 /* -------- FOOTER --------- */
 
 .footer-container {
@@ -173,6 +234,14 @@ body {
   justify-content: center;
 }
 
+.footer-link {
+  color: inherit; /* Use the same color as the parent element, or specify your own color */
+  text-decoration: none; /* Remove underline */
+}
+
+.footer-link:hover {
+  text-decoration: underline; /* Add underline on hover if desired */
+}
 
 
 
@@ -459,6 +528,37 @@ body {
   width: 20px;
 }
 
+@media only screen and (max-width: 375px){
+  .login-page-container{
+    border: 2px solid orange;
+    width: 99%;
+    display: flex;
+  }
+  .sign-in-container,
+  .sign-up-container {
+    /* flex: 1; */
+    width: %; /* Adjust as needed to leave some space between containers */
+  }
+  .sign-in-container h1,
+  .sign-up-container h1 {
+    font-size: 25px;
+  }
+  /* .sign-up-container {
+    width: 50%;
+  } */
+  .login-input-box {
+    width: 130px;
+    font-size: 15px;
+  }
+  .eye-icon {
+    height: 20px;
+    width: 20px;
+    /* margin-top: -10px; */
+  }
+  .input-container {
+    font-size: 15px;
+  }
+}
 
 
 /* -------- About Us --------- */
@@ -469,6 +569,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 80vh;
+  width: 100%;
 }
 
 .single-box {
@@ -506,4 +607,69 @@ body {
   border: none;
   height: 50px;
 }
+
+@media only screen and (max-width: 500px){
+  .aboutus-container {
+    flex-direction: column;
+    width: 100%;
+    height: 95%;
+    margin-top: 200px;
+  }
+  .aboutus-container p {
+    border: 2px solid transparent;
+    width: 100%;
+    margin-bottom: -20px;
+  }
+  .single-box {
+    width: 90%;
+    height: 550px;
+    margin-bottom: 20px;
+    border: 2px solid transparent;
+  }
+
+  .external-links img {
+    width: 20px;
+  }
+  .single-box img {
+    max-width: 50%;
+    height: auto;
+  }
+  .single-box p {
+    font-size: 14px;
+  }
+  .external-links {
+    margin-top: 30px;
+  }
+
+
+}
+
+/* -------- Recipe Page --------- */
+
+.recipe-container{
+  border: 2px solid transparent;
+  width: 50%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.nutrition-list {
+  list-style: none;
+  border: 2px solid transparent;
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 500px){
+
+}
+
 /* -------- Not Found Page --------- */
+
+.not-found-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 95%; 
+}
+
