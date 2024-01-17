@@ -21,7 +21,8 @@ const AboutUs = () => {
           <h3>Joseph McMorris II</h3>
           <img src={J} />
           <p>
-          Hello. My name is Joseph I am a full-stack web developer who transition from the military into tech. I have 10 years of experience in civil engineering. In my free time I like brazilian jiu jitsu and volleyball.
+         
+            Hello, I'm Joseph—a full-stack web developer with a military background and a decade of experience in civil engineering. Outside of coding, I enjoy Brazilian Jiu-Jitsu and volleyball. Let's create something exceptional!
           </p>
           <div className="external-links">
             <a data-testid="github-link" href="https://github.com/JosephMcMorrisII">

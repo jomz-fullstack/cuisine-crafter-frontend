@@ -1,11 +1,15 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Eye from "../assets/Eye.png";
 
-const Signup = ({ signup }) => {
+const SignUp = ({ signup }) => {
   const formRef = useRef();
   const navigate = useNavigate();
+  const passwordRef = useRef(null);
+  const confirmPasswordRef = useRef(null);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSignUpSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
     const data = Object.fromEntries(formData);
@@ -15,32 +19,71 @@ const Signup = ({ signup }) => {
     console.log("user info: ", userInfo);
     signup(userInfo);
     navigate("/");
-    e.target.reset();
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+    if (passwordRef.current) {
+      passwordRef.current.type = showPassword ? "password" : "text";
+    }
+    if (confirmPasswordRef.current) {
+      confirmPasswordRef.current.type = showPassword ? "password" : "text";
+    }
   };
 
   return (
-    <div>
-      <form ref={formRef} onSubmit={handleSubmit}>
-        Email: <input type="email" name="email" placeholder="email" />
-        <br />
-        Password:{" "}
-        <input type="password" name="password" placeholder="password" />
-        <br />
-        Confirm Password:{" "}
+    <div className="sign-up-container">
+      <h1 className="header">No Login? Sign up today!</h1>
+      <form ref={formRef} className="input-container" onSubmit={handleSignUpSubmit}>
+        Email: <br />
         <input
+          type="email"
+          name="email"
+          placeholder="email"
+          required
+          className="login-input-box"
+        />
+        <br />
+        Password: <br />
+        <input
+          ref={passwordRef}
+          type="password"
+          name="password"
+          placeholder="password"
+          required
+          className="login-input-box"
+        />
+        <button type="button" onClick={togglePasswordVisibility}>
+          {showPassword ? (
+            <img src={Eye} alt="Hide Password" className="eye-icon" />
+          ) : (
+            <img src={Eye} alt="Show Password" className="eye-icon" />
+          )}
+        </button>{" "}
+        <br />
+        Confirm Password: <br />
+        <input
+          ref={confirmPasswordRef}
           type="password"
           name="password_confirmation"
           placeholder="confirm password"
+          required
+          className="login-input-box"
         />
-        <button type="submit">Submit</button>
+        <button type="button" onClick={togglePasswordVisibility}>
+          {showPassword ? (
+            <img src={Eye} alt="Hide Password" className="eye-icon" />
+          ) : (
+            <img src={Eye} alt="Show Password" className="eye-icon" />
+          )}
+        </button>
         <br />
+        <button type="submit"  className="login-submit">
+          Submit
+        </button>
       </form>
-      <br />
-      <div>
-        Already registered? <a href="/login">Login</a>
-      </div>
     </div>
   );
 };
 
-export default Signup;
+export default SignUp;

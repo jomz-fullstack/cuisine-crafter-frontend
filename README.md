@@ -7,12 +7,13 @@ Search through a vast collection of mouthwatering recipes, leveraging the [Spoon
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-## Authors
+## Credits
+Cuisine Crafter would not have been possible without the contributions and support of the following individuals:
 
-- [@JosephMcMorrisII](https://github.com/JosephMcMorrisII)
-- [@0Tron](https://github.com/0Tron)
-- [@Mvangg](https://github.com/Mvangg)
-- [@zeniavarela](https://github.com/zeniavarela)
+- [@JosephMcMorrisII](https://github.com/JosephMcMorrisII) Joseph McMorris II, Product Manager
+- [@0Tron](https://github.com/0Tron) Oscar Troncoso, Lead Tech
+- [@Mvangg](https://github.com/Mvangg) Marinda Vang,  Head of UX/UI 
+- [@zeniavarela](https://github.com/zeniavarela) Zenia Varela, Project Manager
 
 
 ## Features
