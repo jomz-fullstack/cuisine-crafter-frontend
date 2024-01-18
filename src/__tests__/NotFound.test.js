@@ -12,7 +12,7 @@ describe("<NotFound />", () => {
     );
   it("renders without crashing", () => {
     renderNotFound()
-    screen.logTestingPlaygroundURL()
+    // screen.logTestingPlaygroundURL()
   })
   it("renders an image", () => {
     renderNotFound()

@@ -38,7 +38,7 @@ const AboutUs = () => {
           <h3>Oscar Troncoso</h3>
           <img src={O} />
           <p>
-          Hi, I’m Oscar— a Full Stack Web Developer with a Military and Electrical background. After spending several years leading Marines as a Platoon Sergeant and illuminating spaces as an Electrician, I decided to shift my focus towards tech. :bulb:
+          Hi, I’m Oscar— a Full Stack Web Developer with a Military and Electrical background. After spending several years leading Marines as a Platoon Sergeant and illuminating spaces as an Electrician, I decided to shift my focus towards tech. 💡
           </p>
           <div className="external-links">
             <a data-testid="github-link" href="https://github.com/0Tron">

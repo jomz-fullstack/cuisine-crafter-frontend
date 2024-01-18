@@ -1,5 +1,6 @@
 import { BrowserRouter } from "react-router-dom"
 import { render, screen } from "@testing-library/react"
+import userEvent from "@testing-library/user-event";
 import SignUp from "../pages/SignUp"
 
 describe("<SignUp />", () => {
@@ -12,6 +13,8 @@ describe("<SignUp />", () => {
 
   it("renders without crashing", () => {
     renderSignUp()
+    screen.logTestingPlaygroundURL()
+
   })
 
   it("renders the 'No Login? Sign up today!' header", () => {
@@ -56,8 +59,33 @@ describe("<SignUp />", () => {
     expect(specificButton).toBeInTheDocument()
   })
 
-  it("renders the 'Submit' button", () => {
-    renderSignUp()
-    expect(screen.getByText("Submit")).toBeInTheDocument()
-  })
-})
+  it("submits the form correctly", () => {
+    renderSignUp();
+
+    // Mock console.log to capture the output
+    const consoleSpy = jest.spyOn(console, "log").mockImplementation();
+
+    // Simulate form input
+    userEvent.type(screen.getByPlaceholderText("email"), "test@example.com");
+    userEvent.type(screen.getByPlaceholderText("password"), "password123");
+    userEvent.type(screen.getByPlaceholderText("confirm password"), "password123");
+
+    // Trigger form submission
+    userEvent.click(screen.getByText("Submit"));
+
+    // Check if the expected user info is logged to the console
+    expect(consoleSpy).toHaveBeenCalledWith(
+      "user info: ",
+      {
+        user: {
+          email: "test@example.com",
+          password: "password123",
+        },
+      }
+    );
+
+    // Restore the original console.log implementation
+    consoleSpy.mockRestore();
+  });
+  
+}) 
