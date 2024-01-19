@@ -77,3 +77,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 https://www.youtube.com/watch?v=kdSAjuPBLMw 
 
+![Screenshot 2024-01-19 at 2 43 23 PM](https://github.com/jomz-fullstack/cuisine-crafter-frontend/assets/144633837/a9985264-9888-4332-86bd-01e974b772d7)
+
+
