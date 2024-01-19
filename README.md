@@ -73,3 +73,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 - react-star-ratings-component
 - reactstrap
 
+# Project Demo and Walkthrough 
+
+https://www.youtube.com/watch?v=kdSAjuPBLMw 
+
